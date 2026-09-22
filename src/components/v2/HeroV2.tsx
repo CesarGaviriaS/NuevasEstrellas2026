@@ -208,7 +208,7 @@ export default function HeroV2() {
 
                             <div className="flex flex-wrap items-center gap-3 pt-2">
                                 <Link
-                                    href="/2#torneo"
+                                    href="/#torneo"
                                     className="bg-white/20 hover:bg-white/30 text-white font-semibold text-sm sm:text-base px-6 py-3 rounded-full border border-white/30 backdrop-blur-sm transition-all"
                                 >
                                     Conoce más

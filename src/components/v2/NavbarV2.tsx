@@ -12,20 +12,20 @@ export default function NavbarV2() {
     const WHATSAPP_URL = "https://wa.me/573132644781?text=" + encodeURIComponent("¡Hola! Deseo recibir información oficial para inscribir a mi equipo en el Torneo Nuevas Estrellas Electrolit 2026 en Yopal.");
 
     const navLinks = [
-        { href: "/2#torneo", label: "El Torneo" },
-        { href: "/2#categorias", label: "Categorías" },
-        { href: "/2#inscripciones", label: "Inscripciones" },
-        { href: "/2#sedes", label: "Sedes" },
-        { href: "/2#scouts", label: "Scouts" },
-        { href: "/2#noticias", label: "Noticias" },
-        { href: "/2#promotora", label: "La Promotora" },
+        { href: "/#torneo", label: "El Torneo" },
+        { href: "/#categorias", label: "Categorías" },
+        { href: "/#inscripciones", label: "Inscripciones" },
+        { href: "/#sedes", label: "Sedes" },
+        { href: "/#scouts", label: "Scouts" },
+        { href: "/#noticias", label: "Noticias" },
+        { href: "/#promotora", label: "La Promotora" },
     ];
 
     return (
         <>
             <header className="fixed top-0 left-0 right-0 z-50 bg-primary text-white shadow-lg">
                 <div className="mx-auto w-full responsive-padding py-2 flex items-center justify-between">
-                    <Link href="/2" className="flex items-center gap-2 cursor-pointer hover:opacity-90 transition-opacity flex-shrink-0">
+                    <Link href="/" className="flex items-center gap-2 cursor-pointer hover:opacity-90 transition-opacity flex-shrink-0">
                         <div className="relative h-12 w-12 flex-shrink-0">
                             <Image
                                 src="/logo-copa-simple.png"
