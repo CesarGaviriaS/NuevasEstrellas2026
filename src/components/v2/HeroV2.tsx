@@ -222,11 +222,11 @@ export default function HeroV2() {
                             </div>
                         </div>
 
-                        {/* Right Column: Frameless Interactive Vertical 3D Carousel (Larger Size) */}
-                        <div className="lg:col-span-5 flex justify-center lg:justify-end">
+                        {/* Right Column: Frameless Interactive Vertical 3D Carousel (Aligned to top of left column) */}
+                        <div className="lg:col-span-5 flex justify-center lg:justify-end lg:pt-3">
                             <div className="w-full max-w-lg lg:max-w-xl select-none">
                                 {/* Clean Floating Header */}
-                                <div className="flex items-center justify-between pb-2.5 mb-2 px-2 text-white">
+                                <div className="flex items-center justify-between pb-2.5 mb-2 px-2 text-white min-h-[24px]">
                                     <div className="flex items-center gap-2.5">
                                         <Newspaper className="w-5 h-5 text-amber-300" />
                                         <span className="text-sm font-bold uppercase tracking-wider text-white drop-shadow-sm">
