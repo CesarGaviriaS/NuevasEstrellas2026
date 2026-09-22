@@ -263,7 +263,7 @@ export default function HeroV2() {
                                     <div
                                         ref={scrollContainerRef}
                                         onScroll={handleScroll}
-                                        className="h-[195px] overflow-y-auto divide-y divide-white/10 pr-1.5 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent hover:scrollbar-thumb-amber-300/50 transition-colors"
+                                        className="h-[195px] overflow-y-auto divide-y divide-white/10 pr-2 liquid-glass-scroll"
                                     >
                                         {articles.map((article, idx) => (
                                             <Link
