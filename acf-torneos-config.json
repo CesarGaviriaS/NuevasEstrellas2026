@@ -1,0 +1,312 @@
+[
+  {
+    "key": "group_torneo_edicion_free",
+    "title": "🏆 Torneo - Configuración de Edición",
+    "fields": [
+      {
+        "key": "field_tab_general",
+        "label": "General y Fechas",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_ed_year",
+        "label": "Año de la Edición",
+        "name": "edition_year",
+        "type": "text",
+        "instructions": "Ejemplo: 2026",
+        "default_value": "2026"
+      },
+      {
+        "key": "field_ed_title",
+        "label": "Título de la Edición",
+        "name": "edition_title",
+        "type": "text",
+        "default_value": "Edición 2026 (Próximamente)"
+      },
+      {
+        "key": "field_ed_description",
+        "label": "Descripción Resumida",
+        "name": "edition_description",
+        "type": "textarea",
+        "rows": 3,
+        "default_value": "La edición 2026 del Torneo Nuevas Estrellas Electrolit en Yopal, Casanare."
+      },
+      {
+        "key": "field_ed_cover",
+        "label": "Imagen de Portada",
+        "name": "edition_cover",
+        "type": "image",
+        "return_format": "url"
+      },
+      {
+        "key": "field_ed_reg_status",
+        "label": "Estado de Inscripciones",
+        "name": "registration_status",
+        "type": "select",
+        "choices": {
+          "ABIERTAS": "ABIERTAS",
+          "CERRADAS": "CERRADAS",
+          "PRÓXIMAMENTE": "PRÓXIMAMENTE",
+          "FINALIZADO": "FINALIZADO"
+        },
+        "default_value": "ABIERTAS"
+      },
+      {
+        "key": "field_ed_reg_deadline",
+        "label": "Fecha Límite de Inscripción",
+        "name": "registration_deadline",
+        "type": "text",
+        "default_value": "Por definir"
+      },
+      {
+        "key": "field_ed_congress_date",
+        "label": "Fecha Congreso Técnico",
+        "name": "technical_congress_date",
+        "type": "text",
+        "default_value": "Por definir"
+      },
+      {
+        "key": "field_ed_start_date",
+        "label": "Fecha Inauguración",
+        "name": "start_date",
+        "type": "text",
+        "default_value": "Por definir"
+      },
+      {
+        "key": "field_ed_final_date",
+        "label": "Fecha de la Gran Final",
+        "name": "final_date",
+        "type": "text",
+        "default_value": "Por definir"
+      },
+      {
+        "key": "field_tab_venues",
+        "label": "Sedes y Ubicaciones",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_venue_1_name",
+        "label": "Sede 1: Nombre de la Cancha / Complejo",
+        "name": "venue_1_name",
+        "type": "text",
+        "instructions": "Ejemplo: Estadio Santiago de las Atalayas (Yopal)"
+      },
+      {
+        "key": "field_venue_1_map",
+        "label": "Sede 1: Enlace Google Maps Embed",
+        "name": "venue_1_map",
+        "type": "text",
+        "instructions": "URL que viene dentro del iframe de Google Maps"
+      },
+      {
+        "key": "field_venue_2_name",
+        "label": "Sede 2: Nombre de la Cancha / Complejo",
+        "name": "venue_2_name",
+        "type": "text"
+      },
+      {
+        "key": "field_venue_2_map",
+        "label": "Sede 2: Enlace Google Maps Embed",
+        "name": "venue_2_map",
+        "type": "text"
+      },
+      {
+        "key": "field_venue_3_name",
+        "label": "Sede 3: Nombre de la Cancha / Complejo",
+        "name": "venue_3_name",
+        "type": "text"
+      },
+      {
+        "key": "field_venue_3_map",
+        "label": "Sede 3: Enlace Google Maps Embed",
+        "name": "venue_3_map",
+        "type": "text"
+      },
+      {
+        "key": "field_tab_docs",
+        "label": "Documentos Oficiales",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_doc_1_title",
+        "label": "Documento 1: Título",
+        "name": "doc_1_title",
+        "type": "text",
+        "instructions": "Ejemplo: Planilla de inscripción 2026"
+      },
+      {
+        "key": "field_doc_1_file",
+        "label": "Documento 1: Archivo PDF",
+        "name": "doc_1_file",
+        "type": "file",
+        "return_format": "url"
+      },
+      {
+        "key": "field_doc_2_title",
+        "label": "Documento 2: Título",
+        "name": "doc_2_title",
+        "type": "text",
+        "instructions": "Ejemplo: Autorización de imagen"
+      },
+      {
+        "key": "field_doc_2_file",
+        "label": "Documento 2: Archivo PDF",
+        "name": "doc_2_file",
+        "type": "file",
+        "return_format": "url"
+      },
+      {
+        "key": "field_doc_3_title",
+        "label": "Documento 3: Título",
+        "name": "doc_3_title",
+        "type": "text",
+        "instructions": "Ejemplo: Carta de exoneración y responsabilidad"
+      },
+      {
+        "key": "field_doc_3_file",
+        "label": "Documento 3: Archivo PDF",
+        "name": "doc_3_file",
+        "type": "file",
+        "return_format": "url"
+      },
+      {
+        "key": "field_tab_scouts",
+        "label": "Scouts y Veedores",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_scouts_enabled",
+        "label": "¿Mostrar Sección de Scouts?",
+        "name": "scouts_enabled",
+        "type": "true_false",
+        "default_value": 1,
+        "ui": 1
+      },
+      {
+        "key": "field_scouts_title",
+        "label": "Título de la Sección de Scouts",
+        "name": "scouts_title",
+        "type": "text",
+        "default_value": "Scouting Garantizado"
+      },
+      {
+        "key": "field_scout_1_name",
+        "label": "Scout 1: Nombre",
+        "name": "scout_1_name",
+        "type": "text"
+      },
+      {
+        "key": "field_scout_1_logo",
+        "label": "Scout 1: Escudo / Logo",
+        "name": "scout_1_logo",
+        "type": "image",
+        "return_format": "url"
+      },
+      {
+        "key": "field_scout_2_name",
+        "label": "Scout 2: Nombre",
+        "name": "scout_2_name",
+        "type": "text"
+      },
+      {
+        "key": "field_scout_2_logo",
+        "label": "Scout 2: Escudo / Logo",
+        "name": "scout_2_logo",
+        "type": "image",
+        "return_format": "url"
+      },
+      {
+        "key": "field_scout_3_name",
+        "label": "Scout 3: Nombre",
+        "name": "scout_3_name",
+        "type": "text"
+      },
+      {
+        "key": "field_scout_3_logo",
+        "label": "Scout 3: Escudo / Logo",
+        "name": "scout_3_logo",
+        "type": "image",
+        "return_format": "url"
+      },
+      {
+        "key": "field_scout_4_name",
+        "label": "Scout 4: Nombre",
+        "name": "scout_4_name",
+        "type": "text"
+      },
+      {
+        "key": "field_scout_4_logo",
+        "label": "Scout 4: Escudo / Logo",
+        "name": "scout_4_logo",
+        "type": "image",
+        "return_format": "url"
+      },
+      {
+        "key": "field_tab_gallery",
+        "label": "Galería",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_gallery_enabled",
+        "label": "¿Mostrar Galería Preview?",
+        "name": "gallery_enabled",
+        "type": "true_false",
+        "default_value": 0,
+        "ui": 1
+      },
+      {
+        "key": "field_gal_img_1",
+        "label": "Foto Destacada 1",
+        "name": "gal_img_1",
+        "type": "image",
+        "return_format": "url"
+      },
+      {
+        "key": "field_gal_img_2",
+        "label": "Foto Destacada 2",
+        "name": "gal_img_2",
+        "type": "image",
+        "return_format": "url"
+      },
+      {
+        "key": "field_gal_img_3",
+        "label": "Foto Destacada 3",
+        "name": "gal_img_3",
+        "type": "image",
+        "return_format": "url"
+      },
+      {
+        "key": "field_gallery_link",
+        "label": "Enlace al Álbum Completo",
+        "name": "full_gallery_link",
+        "type": "text",
+        "default_value": "/galeria/2026"
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "torneo"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+  }
+]

@@ -1,0 +1,485 @@
+[
+  {
+    "key": "group_home_configuration",
+    "title": "Configuración de Secciones del Home",
+    "fields": [
+      {
+        "key": "field_tab_switches",
+        "label": "Interruptores de Secciones",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_mostrar_intro",
+        "label": "Mostrar Sección Intro / Logo",
+        "name": "mostrar_intro",
+        "type": "true_false",
+        "default_value": 1,
+        "ui": 1,
+        "ui_on_text": "Visible",
+        "ui_off_text": "Oculto"
+      },
+      {
+        "key": "field_mostrar_hero",
+        "label": "Mostrar Sección Hero (Banner Principal)",
+        "name": "mostrar_hero",
+        "type": "true_false",
+        "default_value": 1,
+        "ui": 1,
+        "ui_on_text": "Visible",
+        "ui_off_text": "Oculto"
+      },
+      {
+        "key": "field_mostrar_quienes_somos",
+        "label": "Mostrar Sección Quiénes Somos",
+        "name": "mostrar_quienes_somos",
+        "type": "true_false",
+        "default_value": 1,
+        "ui": 1,
+        "ui_on_text": "Visible",
+        "ui_off_text": "Oculto"
+      },
+      {
+        "key": "field_mostrar_acerca_de",
+        "label": "Mostrar Sección Acerca de",
+        "name": "mostrar_acerca_de",
+        "type": "true_false",
+        "default_value": 1,
+        "ui": 1,
+        "ui_on_text": "Visible",
+        "ui_off_text": "Oculto"
+      },
+      {
+        "key": "field_mostrar_modelo",
+        "label": "Mostrar Sección Modelo del Torneo",
+        "name": "mostrar_modelo",
+        "type": "true_false",
+        "default_value": 1,
+        "ui": 1,
+        "ui_on_text": "Visible",
+        "ui_off_text": "Oculto"
+      },
+      {
+        "key": "field_mostrar_impacto",
+        "label": "Mostrar Sección Impacto",
+        "name": "mostrar_impacto",
+        "type": "true_false",
+        "default_value": 1,
+        "ui": 1,
+        "ui_on_text": "Visible",
+        "ui_off_text": "Oculto"
+      },
+      {
+        "key": "field_mostrar_metricas",
+        "label": "Mostrar Sección Métricas y Cifras",
+        "name": "mostrar_metricas",
+        "type": "true_false",
+        "default_value": 1,
+        "ui": 1,
+        "ui_on_text": "Visible",
+        "ui_off_text": "Oculto"
+      },
+      {
+        "key": "field_mostrar_premios",
+        "label": "Mostrar Sección Premios y Reconocimientos",
+        "name": "mostrar_premios",
+        "type": "true_false",
+        "default_value": 1,
+        "ui": 1,
+        "ui_on_text": "Visible",
+        "ui_off_text": "Oculto"
+      },
+      {
+        "key": "field_mostrar_talento",
+        "label": "Mostrar Sección Talento y Veedores",
+        "name": "mostrar_talento",
+        "type": "true_false",
+        "default_value": 1,
+        "ui": 1,
+        "ui_on_text": "Visible",
+        "ui_off_text": "Oculto"
+      },
+      {
+        "key": "field_mostrar_galeria",
+        "label": "Mostrar Sección Galería",
+        "name": "mostrar_galeria",
+        "type": "true_false",
+        "default_value": 1,
+        "ui": 1,
+        "ui_on_text": "Visible",
+        "ui_off_text": "Oculto"
+      },
+      {
+        "key": "field_mostrar_patrocinadores",
+        "label": "Mostrar Sección Patrocinadores (Partners)",
+        "name": "mostrar_patrocinadores",
+        "type": "true_false",
+        "default_value": 1,
+        "ui": 1,
+        "ui_on_text": "Visible",
+        "ui_off_text": "Oculto"
+      },
+      {
+        "key": "field_mostrar_equipo",
+        "label": "Mostrar Sección Equipo / Staff",
+        "name": "mostrar_equipo",
+        "type": "true_false",
+        "default_value": 1,
+        "ui": 1,
+        "ui_on_text": "Visible",
+        "ui_off_text": "Oculto"
+      },
+      {
+        "key": "field_mostrar_contacto",
+        "label": "Mostrar Sección Contacto",
+        "name": "mostrar_contacto",
+        "type": "true_false",
+        "default_value": 1,
+        "ui": 1,
+        "ui_on_text": "Visible",
+        "ui_off_text": "Oculto"
+      },
+      {
+        "key": "field_tab_hero_texts",
+        "label": "Hero y Diapositivas",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_hero_titulo",
+        "label": "Título Principal del Hero",
+        "name": "hero_titulo",
+        "type": "text",
+        "default_value": "Nuevas Estrellas: Desarrollo de Talento",
+        "placeholder": "Ingresa el título principal..."
+      },
+      {
+        "key": "field_hero_subtitulo",
+        "label": "Subtítulo / Bajada del Hero",
+        "name": "hero_subtitulo",
+        "type": "textarea",
+        "default_value": "Impulsando el desarrollo integral de jóvenes futbolistas talentosos de Colombia.",
+        "placeholder": "Ingresa el subtítulo..."
+      },
+      {
+        "key": "field_tab_metrics_impact",
+        "label": "Métricas e Impacto",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_metric_participantes",
+        "label": "Número de Futbolistas Participantes",
+        "name": "metric_participantes",
+        "type": "text",
+        "default_value": "1,200+",
+        "placeholder": "1,200+"
+      },
+      {
+        "key": "field_metric_proyectados",
+        "label": "Número de Futbolistas Proyectados",
+        "name": "metric_proyectados",
+        "type": "text",
+        "default_value": "50+",
+        "placeholder": "50+"
+      },
+      {
+        "key": "field_metric_categorias",
+        "label": "Número de Categorías Juveniles",
+        "name": "metric_categorias",
+        "type": "text",
+        "default_value": "4",
+        "placeholder": "4"
+      },
+      {
+        "key": "field_impact_texto",
+        "label": "Texto de Impacto y Referentes Formados",
+        "name": "impact_texto",
+        "type": "textarea",
+        "default_value": "Hemos acompañado el proceso formativo y competitivo de grandes referentes del fútbol colombiano como Larry Vásquez, Leonardo Pico, Jhon Arias, Cristian Barrios, Marcos Pérez, Cristian Martínez Borja, Wason y Carlos Rentería."
+      },
+      {
+        "key": "field_whoweare_intro",
+        "label": "Párrafo de Introducción (Quiénes Somos)",
+        "name": "whoweare_intro",
+        "type": "textarea",
+        "default_value": "La Promotora Deportiva Nuevas Estrellas, liderada por el Licenciado Wagner Sinisterra y el dirigente deportivo Luis Francisco Lagos, es una entidad con una trayectoria destacada en el mundo del fútbol. Esta dedicada a la búsqueda y desarrollo de futbolistas con el potencial de convertirse en figuras del futbol profesional."
+      },
+      {
+        "key": "field_tab_sponsors",
+        "label": "Patrocinadores",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_sponsors_titulo",
+        "label": "Título de la Sección Patrocinadores",
+        "name": "sponsors_titulo",
+        "type": "text",
+        "default_value": "Nuestros Patrocinadores"
+      },
+      {
+        "key": "field_sponsors_descripcion",
+        "label": "Descripción de Patrocinadores",
+        "name": "sponsors_descripcion",
+        "type": "textarea",
+        "default_value": "Estamos orgullosos de colaborar con estos aliados clave. Su apoyo vital ayuda a Nuevas Estrellas a impulsar el desarrollo del talento juvenil en el fútbol colombiano."
+      },
+      {
+        "key": "field_sponsor_1_name",
+        "label": "Patrocinador 1 - Nombre",
+        "name": "sponsor_1_name",
+        "type": "text",
+        "default_value": "Electrolit",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_1_logo",
+        "label": "Patrocinador 1 - Logo",
+        "name": "sponsor_1_logo",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Logo del patrocinador 1 desde la Biblioteca de Medios.",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_2_name",
+        "label": "Patrocinador 2 - Nombre",
+        "name": "sponsor_2_name",
+        "type": "text",
+        "default_value": "Sogamoso",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_2_logo",
+        "label": "Patrocinador 2 - Logo",
+        "name": "sponsor_2_logo",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Logo del patrocinador 2.",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_3_name",
+        "label": "Patrocinador 3 - Nombre",
+        "name": "sponsor_3_name",
+        "type": "text",
+        "default_value": "Varsan",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_3_logo",
+        "label": "Patrocinador 3 - Logo",
+        "name": "sponsor_3_logo",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Logo del patrocinador 3.",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_4_name",
+        "label": "Patrocinador 4 - Nombre",
+        "name": "sponsor_4_name",
+        "type": "text",
+        "default_value": "Camilo Camargo",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_4_logo",
+        "label": "Patrocinador 4 - Logo",
+        "name": "sponsor_4_logo",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Logo del patrocinador 4.",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_5_name",
+        "label": "Patrocinador 5 - Nombre",
+        "name": "sponsor_5_name",
+        "type": "text",
+        "default_value": "Keiros",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_5_logo",
+        "label": "Patrocinador 5 - Logo",
+        "name": "sponsor_5_logo",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Logo del patrocinador 5.",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_6_name",
+        "label": "Patrocinador 6 - Nombre",
+        "name": "sponsor_6_name",
+        "type": "text",
+        "placeholder": "Nombre del patrocinador...",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_6_logo",
+        "label": "Patrocinador 6 - Logo",
+        "name": "sponsor_6_logo",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Logo del patrocinador 6.",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_7_name",
+        "label": "Patrocinador 7 - Nombre",
+        "name": "sponsor_7_name",
+        "type": "text",
+        "placeholder": "Nombre del patrocinador...",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_7_logo",
+        "label": "Patrocinador 7 - Logo",
+        "name": "sponsor_7_logo",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Logo del patrocinador 7.",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_8_name",
+        "label": "Patrocinador 8 - Nombre",
+        "name": "sponsor_8_name",
+        "type": "text",
+        "placeholder": "Nombre del patrocinador...",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_sponsor_8_logo",
+        "label": "Patrocinador 8 - Logo",
+        "name": "sponsor_8_logo",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Logo del patrocinador 8.",
+        "wrapper": { "width": "50" }
+      },
+      {
+        "key": "field_tab_images",
+        "label": "📸 Fotos e Imágenes",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_whoweare_imagen",
+        "label": "Foto de Quiénes Somos",
+        "name": "whoweare_imagen",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Selecciona la foto representativa de Quiénes Somos desde la Biblioteca de Medios."
+      },
+      {
+        "key": "field_hero_slide_1",
+        "label": "Hero - Diapositiva 1",
+        "name": "hero_slide_1",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Imagen de fondo de la diapositiva 1 del banner principal."
+      },
+      {
+        "key": "field_hero_slide_2",
+        "label": "Hero - Diapositiva 2",
+        "name": "hero_slide_2",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Imagen de fondo de la diapositiva 2 del banner principal."
+      },
+      {
+        "key": "field_hero_slide_3",
+        "label": "Hero - Diapositiva 3",
+        "name": "hero_slide_3",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Imagen de fondo de la diapositiva 3 del banner principal."
+      },
+      {
+        "key": "field_impact_imagen",
+        "label": "Fondo de Sección Nuestro Impacto",
+        "name": "impact_imagen",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Foto o fondo de la sección de impacto y referentes."
+      },
+      {
+        "key": "field_talento_imagen",
+        "label": "Foto de Sección Talento Colombiano",
+        "name": "talento_imagen",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Foto de jugadores / canteranos para la sección de talento."
+      },
+      {
+        "key": "field_premios_imagen",
+        "label": "Foto de Sección Premios y Logros",
+        "name": "premios_imagen",
+        "type": "image",
+        "return_format": "url",
+        "instructions": "Foto de trofeos y reconocimientos."
+      },
+      {
+        "key": "field_tab_contact",
+        "label": "Contacto y WhatsApp",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_contacto_whatsapp",
+        "label": "Número de WhatsApp Oficial (con código de país)",
+        "name": "contacto_whatsapp",
+        "type": "text",
+        "default_value": "+57 310 000 0000",
+        "placeholder": "+57 310 000 0000"
+      },
+      {
+        "key": "field_contacto_email",
+        "label": "Correo Electrónico de Contacto",
+        "name": "contacto_email",
+        "type": "email",
+        "default_value": "director@nuevasestrellas.com"
+      },
+      {
+        "key": "field_contacto_representante",
+        "label": "Nombre del Representante",
+        "name": "contacto_representante",
+        "type": "text",
+        "default_value": "Luis Francisco Lagos R."
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "page",
+          "operator": "==",
+          "value": "10"
+        }
+      ],
+      [
+        {
+          "param": "page_type",
+          "operator": "==",
+          "value": "front_page"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "show_in_rest": 1
+  }
+]

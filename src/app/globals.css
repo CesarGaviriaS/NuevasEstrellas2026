@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 240, 52%, 37%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 197 71% 73%;
+    --secondary-foreground: 240 64% 27%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 197 71% 85%;
+    --accent-foreground: 240 64% 27%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 240 64% 27%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: clip;
+    min-width: 320px;
+  }
+
+  /* Responsive container padding & max-width containment */
+  .responsive-padding {
+    width: 100%;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1rem, 4vw, 2.5rem);
+    padding-right: clamp(1rem, 4vw, 2.5rem);
+  }
+}
+
+/* Scroll Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll-slow {
+  animation: scroll 45s linear infinite;
+}
+
+/* Only pause on hover for devices with mouse (not touch) */
+@media (pointer: fine) {
+
+  .animate-scroll:hover,
+  .animate-scroll-slow:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Carousel Styles */
+.owl-carousel {
+  position: relative;
+  width: 100%;
+}
+
+.item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.inner {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+
+.inner a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.125rem;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 8px 16px;
+  border-radius: 0.5rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.inner a:hover {
+  border-color: #fff;
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
+}
+
+.black .inner a {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+.black .inner a:hover {
+  border-color: #000;
+  background: rgba(255, 255, 255, 1);
+  color: #000;
+}
+
+/* Navigation buttons positioning */
+.absolute.inset-0 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .inner a {
+    font-size: 0.875rem;
+    padding: 6px 12px;
+  }
+}
+
+/* WordPress Editorial Content Styles */
+.wp-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: #374151;
+  font-size: 1.125rem;
+}
+
+.wp-content h2 {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: #191970;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.wp-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #191970;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.35;
+}
+
+.wp-content blockquote {
+  border-left: 4px solid #191970;
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  background-color: #f8fafc;
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-style: italic;
+  color: #1e293b;
+  font-size: 1.15rem;
+}
+
+.wp-content ul {
+  list-style-type: disc;
+  padding-left: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: #374151;
+  font-size: 1.1rem;
+}
+
+.wp-content ol {
+  list-style-type: decimal;
+  padding-left: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: #374151;
+  font-size: 1.1rem;
+}
+
+.wp-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.wp-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  margin: 2rem auto;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.wp-content figure {
+  margin: 2rem 0;
+}
+
+.wp-content figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+.wp-content a {
+  color: #191970;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.wp-content a:hover {
+  color: #2563eb;
+}
