@@ -259,26 +259,32 @@ export default function HeroV2() {
                                     </div>
                                 </div>
 
-                                {isLoadingNews && articles.length === 0 ? (
-                                    <div className="py-16 text-center text-sm text-white/60">
-                                        Cargando publicaciones...
-                                    </div>
-                                ) : articles.length === 0 ? (
-                                    <div className="py-16 text-center text-sm text-white/60">
-                                        Próximamente más noticias oficiales.
-                                    </div>
-                                ) : (
-                                    /* Interactive 3D Gesture Stage with larger height and items */
-                                    <div
-                                        onWheel={handleWheel}
-                                        onTouchStart={handleTouchStart}
-                                        onTouchEnd={handleTouchEnd}
-                                        onMouseDown={handleMouseDown}
-                                        onMouseUp={handleMouseUp}
-                                        onMouseLeave={handleMouseLeave}
-                                        className="relative w-full h-[320px] sm:h-[340px] flex items-center justify-center cursor-grab active:cursor-grabbing overflow-visible"
-                                    >
-                                        {articles.map((article, idx) => {
+                                {/* Interactive 3D Gesture Stage - Fixed reserved height */}
+                                <div
+                                    onWheel={handleWheel}
+                                    onTouchStart={handleTouchStart}
+                                    onTouchEnd={handleTouchEnd}
+                                    onMouseDown={handleMouseDown}
+                                    onMouseUp={handleMouseUp}
+                                    onMouseLeave={handleMouseLeave}
+                                    className="relative w-full h-[320px] sm:h-[340px] flex items-center justify-center cursor-grab active:cursor-grabbing overflow-visible"
+                                >
+                                    {isLoadingNews && articles.length === 0 ? (
+                                        /* Skeleton placeholder strictly preserving exact layout */
+                                        <div className="w-full px-1 sm:px-2 flex items-center animate-pulse">
+                                            <div className="relative w-36 sm:w-44 aspect-video rounded-2xl bg-white/10 border border-white/10 flex-shrink-0" />
+                                            <div className="-ml-5 sm:-ml-6 pl-8 sm:pl-9 pr-5 py-5 bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl flex-1 space-y-2.5">
+                                                <div className="h-3 w-24 bg-amber-300/30 rounded" />
+                                                <div className="h-4 w-5/6 bg-white/20 rounded" />
+                                                <div className="h-4 w-3/5 bg-white/15 rounded" />
+                                            </div>
+                                        </div>
+                                    ) : articles.length === 0 ? (
+                                        <div className="w-full text-center text-sm text-white/60">
+                                            Próximamente más noticias oficiales.
+                                        </div>
+                                    ) : (
+                                        articles.map((article, idx) => {
                                             // Calculate circular distance
                                             const n = articles.length;
                                             let diff = idx - activeIndex;
@@ -370,9 +376,9 @@ export default function HeroV2() {
                                                     </Link>
                                                 </div>
                                             );
-                                        })}
-                                    </div>
-                                )}
+                                        })
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
