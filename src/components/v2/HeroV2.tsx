@@ -222,37 +222,37 @@ export default function HeroV2() {
                             </div>
                         </div>
 
-                        {/* Right Column: Frameless Interactive Vertical 3D Carousel */}
+                        {/* Right Column: Frameless Interactive Vertical 3D Carousel (Larger Size) */}
                         <div className="lg:col-span-5 flex justify-center lg:justify-end">
-                            <div className="w-full max-w-md select-none">
-                                {/* Clean Floating Header (No card enclosing frame) */}
-                                <div className="flex items-center justify-between pb-2 mb-2 px-2 text-white">
-                                    <div className="flex items-center gap-2">
-                                        <Newspaper className="w-4 h-4 text-amber-300" />
-                                        <span className="text-xs font-bold uppercase tracking-wider text-white drop-shadow-sm">
+                            <div className="w-full max-w-lg lg:max-w-xl select-none">
+                                {/* Clean Floating Header */}
+                                <div className="flex items-center justify-between pb-2.5 mb-2 px-2 text-white">
+                                    <div className="flex items-center gap-2.5">
+                                        <Newspaper className="w-5 h-5 text-amber-300" />
+                                        <span className="text-sm font-bold uppercase tracking-wider text-white drop-shadow-sm">
                                             Noticias & Actualizaciones
                                         </span>
                                     </div>
                                     <div className="flex items-center gap-3">
-                                        <div className="flex items-center gap-1">
+                                        <div className="flex items-center gap-1.5">
                                             <button
                                                 onClick={prevSlide}
                                                 aria-label="Noticia anterior"
-                                                className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors text-white/80 hover:text-white"
+                                                className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors text-white/80 hover:text-white"
                                             >
-                                                <ChevronUp className="w-3.5 h-3.5" />
+                                                <ChevronUp className="w-4 h-4" />
                                             </button>
                                             <button
                                                 onClick={nextSlide}
                                                 aria-label="Siguiente noticia"
-                                                className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors text-white/80 hover:text-white"
+                                                className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors text-white/80 hover:text-white"
                                             >
-                                                <ChevronDown className="w-3.5 h-3.5" />
+                                                <ChevronDown className="w-4 h-4" />
                                             </button>
                                         </div>
                                         <Link
                                             href="/anuncios-notas"
-                                            className="text-[11px] text-amber-300 hover:text-amber-200 font-semibold transition-colors drop-shadow-sm"
+                                            className="text-xs text-amber-300 hover:text-amber-200 font-semibold transition-colors drop-shadow-sm"
                                         >
                                             Ver todas
                                         </Link>
@@ -260,15 +260,15 @@ export default function HeroV2() {
                                 </div>
 
                                 {isLoadingNews && articles.length === 0 ? (
-                                    <div className="py-12 text-center text-xs text-white/60">
+                                    <div className="py-16 text-center text-sm text-white/60">
                                         Cargando publicaciones...
                                     </div>
                                 ) : articles.length === 0 ? (
-                                    <div className="py-12 text-center text-xs text-white/60">
+                                    <div className="py-16 text-center text-sm text-white/60">
                                         Próximamente más noticias oficiales.
                                     </div>
                                 ) : (
-                                    /* Interactive 3D Gesture Stage without enclosing card */
+                                    /* Interactive 3D Gesture Stage with larger height and items */
                                     <div
                                         onWheel={handleWheel}
                                         onTouchStart={handleTouchStart}
@@ -276,7 +276,7 @@ export default function HeroV2() {
                                         onMouseDown={handleMouseDown}
                                         onMouseUp={handleMouseUp}
                                         onMouseLeave={handleMouseLeave}
-                                        className="relative w-full h-[260px] flex items-center justify-center cursor-grab active:cursor-grabbing overflow-visible"
+                                        className="relative w-full h-[320px] sm:h-[340px] flex items-center justify-center cursor-grab active:cursor-grabbing overflow-visible"
                                     >
                                         {articles.map((article, idx) => {
                                             // Calculate circular distance
@@ -303,17 +303,17 @@ export default function HeroV2() {
                                                 opacity = 1;
                                                 zIndex = 30;
                                             } else if (isNext) {
-                                                translateY = 80;
-                                                scale = 0.86;
-                                                opacity = 0.45;
+                                                translateY = 96;
+                                                scale = 0.88;
+                                                opacity = 0.5;
                                                 zIndex = 20;
                                             } else if (isPrev) {
-                                                translateY = -80;
-                                                scale = 0.86;
-                                                opacity = 0.45;
+                                                translateY = -96;
+                                                scale = 0.88;
+                                                opacity = 0.5;
                                                 zIndex = 20;
                                             } else {
-                                                translateY = diff > 0 ? 140 : -140;
+                                                translateY = diff > 0 ? 160 : -160;
                                                 scale = 0.7;
                                                 opacity = 0;
                                                 zIndex = 10;
@@ -322,7 +322,7 @@ export default function HeroV2() {
                                             return (
                                                 <div
                                                     key={`${article.id}-${idx}`}
-                                                    className="absolute w-full px-2"
+                                                    className="absolute w-full px-1 sm:px-2"
                                                     style={{
                                                         transform: `translateY(${translateY}px) scale(${scale})`,
                                                         opacity,
@@ -347,23 +347,23 @@ export default function HeroV2() {
                                                         }}
                                                         className="flex items-center group"
                                                     >
-                                                        {/* Head: 16:9 Image Thumbnail */}
-                                                        <div className="relative w-28 sm:w-32 aspect-video rounded-xl overflow-hidden shadow-2xl border border-white/20 bg-slate-900 flex-shrink-0 z-20 group-hover:scale-105 transition-transform duration-300">
+                                                        {/* Head: Larger 16:9 Image Thumbnail */}
+                                                        <div className="relative w-36 sm:w-44 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-slate-900 flex-shrink-0 z-20 group-hover:scale-105 transition-transform duration-300">
                                                             <Image
                                                                 src={article.imageUrl}
                                                                 alt={article.title}
                                                                 fill
                                                                 className="object-cover"
-                                                                sizes="(max-width: 640px) 112px, 128px"
+                                                                sizes="(max-width: 640px) 144px, 176px"
                                                             />
                                                         </div>
 
                                                         {/* Body: Sleek Overlapping Glass Card */}
-                                                        <div className="-ml-4 pl-7 pr-4 py-3.5 bg-black/75 hover:bg-black/85 backdrop-blur-md border border-white/15 rounded-2xl flex-1 shadow-2xl transition-all">
-                                                            <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider block mb-0.5">
+                                                        <div className="-ml-5 sm:-ml-6 pl-8 sm:pl-9 pr-5 py-4 bg-black/75 hover:bg-black/90 backdrop-blur-md border border-white/15 rounded-2xl flex-1 shadow-2xl transition-all">
+                                                            <span className="text-xs font-bold text-amber-300 uppercase tracking-wider block mb-1">
                                                                 {article.category}
                                                             </span>
-                                                            <h4 className="text-xs sm:text-sm font-semibold text-white line-clamp-2 leading-snug group-hover:text-amber-200 transition-colors">
+                                                            <h4 className="text-sm sm:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-amber-200 transition-colors">
                                                                 {article.title}
                                                             </h4>
                                                         </div>
