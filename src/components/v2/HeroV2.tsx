@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getAnunciosYNotasData, stripHtml } from '@/lib/wordpress';
-import { Newspaper } from 'lucide-react';
+import { Newspaper, CheckCircle2 } from 'lucide-react';
 
 interface ArticleItem {
     id: string;
@@ -62,6 +62,9 @@ export default function HeroV2() {
 
                         if (formatted.length > 0) {
                             setArticles(formatted);
+                            if (posts.length < 10) {
+                                setHasMoreWP(false);
+                            }
                             setIsLoadingNews(false);
                             return;
                         }
@@ -99,6 +102,7 @@ export default function HeroV2() {
                         }
                     });
                     setArticles(fallbackList);
+                    setHasMoreWP(false);
                 }
             } catch (e) {
                 console.warn('Fallback error:', e);
@@ -115,70 +119,60 @@ export default function HeroV2() {
 
     // Function to load more articles on scroll
     const loadMoreArticles = async () => {
-        if (isLoadingMore) return;
+        if (isLoadingMore || !hasMoreWP) return;
         setIsLoadingMore(true);
 
-        if (hasMoreWP) {
-            try {
-                const nextPage = page + 1;
-                const res = await fetch(`https://nuevasestrellas.com/cms/wp-json/wp/v2/posts?_embed&per_page=10&page=${nextPage}`);
-                if (res.ok) {
-                    const posts = await res.json();
-                    if (Array.isArray(posts) && posts.length > 0) {
-                        const newItems: ArticleItem[] = [];
-                        posts.forEach((p: any) => {
-                            if (p.slug === 'hello-world') return;
-                            const title = stripHtml(p.title?.rendered || '');
-                            const linkUrl = `/anuncios-notas/${p.slug}`;
-                            const img = p._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/articulos/FutbolEntreLineas.png';
-                            
-                            const terms = p._embedded?.['wp:term']?.[0] || [];
-                            const isCol = terms.some((t: any) => {
-                                const n = (t.name || '').toLowerCase();
-                                const s = (t.slug || '').toLowerCase();
-                                return s.includes('columna') || s.includes('futbol-entre-lineas') || s.includes('opinion') || n.includes('columna') || n.includes('fútbol');
-                            });
-                            const category = isCol ? 'Fútbol Entre Líneas' : 'Noticias';
-
-                            if (!seenUrlsRef.current.has(linkUrl)) {
-                                seenUrlsRef.current.add(linkUrl);
-                                newItems.push({
-                                    id: String(p.id),
-                                    title,
-                                    imageUrl: img,
-                                    linkUrl,
-                                    category
-                                });
-                            }
+        try {
+            const nextPage = page + 1;
+            const res = await fetch(`https://nuevasestrellas.com/cms/wp-json/wp/v2/posts?_embed&per_page=10&page=${nextPage}`);
+            if (res.ok) {
+                const posts = await res.json();
+                if (Array.isArray(posts) && posts.length > 0) {
+                    const newItems: ArticleItem[] = [];
+                    posts.forEach((p: any) => {
+                        if (p.slug === 'hello-world') return;
+                        const title = stripHtml(p.title?.rendered || '');
+                        const linkUrl = `/anuncios-notas/${p.slug}`;
+                        const img = p._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/articulos/FutbolEntreLineas.png';
+                        
+                        const terms = p._embedded?.['wp:term']?.[0] || [];
+                        const isCol = terms.some((t: any) => {
+                            const n = (t.name || '').toLowerCase();
+                            const s = (t.slug || '').toLowerCase();
+                            return s.includes('columna') || s.includes('futbol-entre-lineas') || s.includes('opinion') || n.includes('columna') || n.includes('fútbol');
                         });
+                        const category = isCol ? 'Fútbol Entre Líneas' : 'Noticias';
 
-                        if (newItems.length > 0) {
-                            setArticles((prev) => [...prev, ...newItems]);
-                            setPage(nextPage);
-                            setIsLoadingMore(false);
-                            return;
+                        if (!seenUrlsRef.current.has(linkUrl)) {
+                            seenUrlsRef.current.add(linkUrl);
+                            newItems.push({
+                                id: String(p.id),
+                                title,
+                                imageUrl: img,
+                                linkUrl,
+                                category
+                            });
                         }
+                    });
+
+                    if (newItems.length > 0) {
+                        setArticles((prev) => [...prev, ...newItems]);
+                        setPage(nextPage);
                     }
-                    setHasMoreWP(false);
+                    if (posts.length < 10) {
+                        setHasMoreWP(false);
+                    }
                 } else {
                     setHasMoreWP(false);
                 }
-            } catch (e) {
+            } else {
                 setHasMoreWP(false);
             }
+        } catch (e) {
+            setHasMoreWP(false);
+        } finally {
+            setIsLoadingMore(false);
         }
-
-        // Infinite loop expansion if WP has no more pages
-        if (articles.length > 0) {
-            setArticles((prev) => [
-                ...prev,
-                ...articles.map((item, i) => ({
-                    ...item,
-                    id: `${item.id}-loop-${Date.now()}-${i}`
-                }))
-            ]);
-        }
-        setIsLoadingMore(false);
     };
 
     // Scroll listener for infinite scroll
@@ -238,7 +232,7 @@ export default function HeroV2() {
                             </div>
                         </div>
 
-                        {/* Right Column: Sleek Mini-News Widget (2.5 items height + infinite scroll) */}
+                        {/* Right Column: Sleek Mini-News Widget (2.5 items height) */}
                         <div className="lg:col-span-5 flex justify-center lg:justify-end">
                             <div className="w-full max-w-md bg-black/40 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/10 shadow-xl text-white">
                                 <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-1">
@@ -299,8 +293,15 @@ export default function HeroV2() {
                                         ))}
 
                                         {isLoadingMore && (
-                                            <div className="py-2 text-center text-[10px] text-white/50">
-                                                Cargando más...
+                                            <div className="py-2.5 text-center text-[11px] text-white/60 animate-pulse">
+                                                Cargando más publicaciones...
+                                            </div>
+                                        )}
+
+                                        {!hasMoreWP && articles.length > 0 && (
+                                            <div className="py-3 text-center text-[11px] text-white/50 flex items-center justify-center gap-1.5 border-t border-white/5 mt-1 transition-opacity duration-500">
+                                                <CheckCircle2 className="w-3.5 h-3.5 text-amber-300/70" />
+                                                <span>Has llegado al final</span>
                                             </div>
                                         )}
                                     </div>
