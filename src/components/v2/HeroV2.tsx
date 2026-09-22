@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getAnunciosYNotasData, stripHtml } from '@/lib/wordpress';
-import { Newspaper } from 'lucide-react';
+import { Newspaper, ChevronUp, ChevronDown } from 'lucide-react';
 
 interface ArticleItem {
     id: string;
@@ -17,6 +17,12 @@ interface ArticleItem {
 export default function HeroV2() {
     const [articles, setArticles] = useState<ArticleItem[]>([]);
     const [isLoadingNews, setIsLoadingNews] = useState(true);
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    // Gesture tracking state
+    const isDraggingRef = useRef(false);
+    const startYRef = useRef(0);
+    const lastWheelTimeRef = useRef(0);
 
     useEffect(() => {
         let isMounted = true;
@@ -110,16 +116,62 @@ export default function HeroV2() {
         };
     }, []);
 
-    // Create a smooth rotating list of at least 5-6 items for vertical carousel
-    let carouselItems: ArticleItem[] = [...articles];
-    if (articles.length > 0 && articles.length < 5) {
-        while (carouselItems.length < 6) {
-            carouselItems = [...carouselItems, ...articles];
-        }
-    }
+    const nextSlide = useCallback(() => {
+        if (articles.length <= 1) return;
+        setActiveIndex((prev) => (prev + 1) % articles.length);
+    }, [articles.length]);
 
-    const totalCount = Math.max(carouselItems.length, 1);
-    const duration = totalCount * 4; // 4 seconds per slide cycle
+    const prevSlide = useCallback(() => {
+        if (articles.length <= 1) return;
+        setActiveIndex((prev) => (prev - 1 + articles.length) % articles.length);
+    }, [articles.length]);
+
+    // Mouse Wheel Handler (Scroll)
+    const handleWheel = (e: React.WheelEvent) => {
+        const now = Date.now();
+        if (now - lastWheelTimeRef.current < 280) return; // Cooldown to feel responsive and smooth
+        if (Math.abs(e.deltaY) > 18) {
+            lastWheelTimeRef.current = now;
+            if (e.deltaY > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+    };
+
+    // Touch & Drag Handlers
+    const handleTouchStart = (e: React.TouchEvent) => {
+        startYRef.current = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e: React.TouchEvent) => {
+        const endY = e.changedTouches[0].clientY;
+        const diff = startYRef.current - endY;
+        if (Math.abs(diff) > 30) {
+            if (diff > 0) nextSlide();
+            else prevSlide();
+        }
+    };
+
+    const handleMouseDown = (e: React.MouseEvent) => {
+        isDraggingRef.current = true;
+        startYRef.current = e.clientY;
+    };
+
+    const handleMouseUp = (e: React.MouseEvent) => {
+        if (!isDraggingRef.current) return;
+        isDraggingRef.current = false;
+        const diff = startYRef.current - e.clientY;
+        if (Math.abs(diff) > 25) {
+            if (diff > 0) nextSlide();
+            else prevSlide();
+        }
+    };
+
+    const handleMouseLeave = () => {
+        isDraggingRef.current = false;
+    };
 
     return (
         <section className="relative min-h-[620px] lg:h-[88vh] lg:min-h-[680px] lg:max-h-[1080px] overflow-hidden">
@@ -170,22 +222,41 @@ export default function HeroV2() {
                             </div>
                         </div>
 
-                        {/* Right Column: Vertical 3D Flowing News Carousel */}
+                        {/* Right Column: Frameless Interactive Vertical 3D Carousel */}
                         <div className="lg:col-span-5 flex justify-center lg:justify-end">
-                            <div className="w-full max-w-md bg-black/35 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/10 shadow-2xl text-white">
-                                <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-2">
+                            <div className="w-full max-w-md select-none">
+                                {/* Clean Floating Header (No card enclosing frame) */}
+                                <div className="flex items-center justify-between pb-2 mb-2 px-2 text-white">
                                     <div className="flex items-center gap-2">
                                         <Newspaper className="w-4 h-4 text-amber-300" />
-                                        <span className="text-xs font-bold uppercase tracking-wider text-white">
+                                        <span className="text-xs font-bold uppercase tracking-wider text-white drop-shadow-sm">
                                             Noticias & Actualizaciones
                                         </span>
                                     </div>
-                                    <Link
-                                        href="/anuncios-notas"
-                                        className="text-[11px] text-amber-300 hover:text-amber-200 font-semibold transition-colors"
-                                    >
-                                        Ver todas
-                                    </Link>
+                                    <div className="flex items-center gap-3">
+                                        <div className="flex items-center gap-1">
+                                            <button
+                                                onClick={prevSlide}
+                                                aria-label="Noticia anterior"
+                                                className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors text-white/80 hover:text-white"
+                                            >
+                                                <ChevronUp className="w-3.5 h-3.5" />
+                                            </button>
+                                            <button
+                                                onClick={nextSlide}
+                                                aria-label="Siguiente noticia"
+                                                className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors text-white/80 hover:text-white"
+                                            >
+                                                <ChevronDown className="w-3.5 h-3.5" />
+                                            </button>
+                                        </div>
+                                        <Link
+                                            href="/anuncios-notas"
+                                            className="text-[11px] text-amber-300 hover:text-amber-200 font-semibold transition-colors drop-shadow-sm"
+                                        >
+                                            Ver todas
+                                        </Link>
+                                    </div>
                                 </div>
 
                                 {isLoadingNews && articles.length === 0 ? (
@@ -197,41 +268,107 @@ export default function HeroV2() {
                                         Próximamente más noticias oficiales.
                                     </div>
                                 ) : (
-                                    /* Vertical 3D Carousel Stage */
-                                    <div className="vertical-carousel-wrapper">
-                                        {carouselItems.map((article, idx) => {
-                                            const delay = (duration / totalCount) * (idx - 1);
+                                    /* Interactive 3D Gesture Stage without enclosing card */
+                                    <div
+                                        onWheel={handleWheel}
+                                        onTouchStart={handleTouchStart}
+                                        onTouchEnd={handleTouchEnd}
+                                        onMouseDown={handleMouseDown}
+                                        onMouseUp={handleMouseUp}
+                                        onMouseLeave={handleMouseLeave}
+                                        className="relative w-full h-[260px] flex items-center justify-center cursor-grab active:cursor-grabbing overflow-visible"
+                                    >
+                                        {articles.map((article, idx) => {
+                                            // Calculate circular distance
+                                            const n = articles.length;
+                                            let diff = idx - activeIndex;
+                                            if (n > 2) {
+                                                if (diff > n / 2) diff -= n;
+                                                if (diff < -n / 2) diff += n;
+                                            }
+
+                                            const isActive = diff === 0;
+                                            const isPrev = diff === -1;
+                                            const isNext = diff === 1;
+                                            const isVisible = isActive || isPrev || isNext;
+
+                                            let translateY = 0;
+                                            let scale = 1;
+                                            let opacity = 0;
+                                            let zIndex = 0;
+
+                                            if (isActive) {
+                                                translateY = 0;
+                                                scale = 1;
+                                                opacity = 1;
+                                                zIndex = 30;
+                                            } else if (isNext) {
+                                                translateY = 80;
+                                                scale = 0.86;
+                                                opacity = 0.45;
+                                                zIndex = 20;
+                                            } else if (isPrev) {
+                                                translateY = -80;
+                                                scale = 0.86;
+                                                opacity = 0.45;
+                                                zIndex = 20;
+                                            } else {
+                                                translateY = diff > 0 ? 140 : -140;
+                                                scale = 0.7;
+                                                opacity = 0;
+                                                zIndex = 10;
+                                            }
+
                                             return (
-                                                <Link
+                                                <div
                                                     key={`${article.id}-${idx}`}
-                                                    href={article.linkUrl}
-                                                    className="vertical-carousel-item flex items-center group cursor-pointer"
+                                                    className="absolute w-full px-2"
                                                     style={{
-                                                        animationDelay: `${delay}s`,
-                                                        animationDuration: `${duration}s`
+                                                        transform: `translateY(${translateY}px) scale(${scale})`,
+                                                        opacity,
+                                                        zIndex,
+                                                        visibility: isVisible ? 'visible' : 'hidden',
+                                                        pointerEvents: isActive ? 'auto' : isVisible ? 'auto' : 'none',
+                                                        transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease'
+                                                    }}
+                                                    onClick={() => {
+                                                        if (!isActive) {
+                                                            setActiveIndex(idx);
+                                                        }
                                                     }}
                                                 >
-                                                    {/* Head: 16:9 Image Thumbnail */}
-                                                    <div className="relative w-28 sm:w-32 aspect-video rounded-xl overflow-hidden shadow-2xl border border-white/20 bg-slate-900 flex-shrink-0 z-20 group-hover:scale-105 transition-transform duration-300">
-                                                        <Image
-                                                            src={article.imageUrl}
-                                                            alt={article.title}
-                                                            fill
-                                                            className="object-cover"
-                                                            sizes="(max-width: 640px) 112px, 128px"
-                                                        />
-                                                    </div>
+                                                    <Link
+                                                        href={isActive ? article.linkUrl : '#'}
+                                                        onClick={(e) => {
+                                                            if (!isActive) {
+                                                                e.preventDefault();
+                                                                setActiveIndex(idx);
+                                                            }
+                                                        }}
+                                                        className="flex items-center group"
+                                                    >
+                                                        {/* Head: 16:9 Image Thumbnail */}
+                                                        <div className="relative w-28 sm:w-32 aspect-video rounded-xl overflow-hidden shadow-2xl border border-white/20 bg-slate-900 flex-shrink-0 z-20 group-hover:scale-105 transition-transform duration-300">
+                                                            <Image
+                                                                src={article.imageUrl}
+                                                                alt={article.title}
+                                                                fill
+                                                                className="object-cover"
+                                                                sizes="(max-width: 640px) 112px, 128px"
+                                                            />
+                                                        </div>
 
-                                                    {/* Body: Sleek Overlapping Glass Card */}
-                                                    <div className="-ml-4 pl-7 pr-4 py-3 bg-black/75 hover:bg-black/90 backdrop-blur-md border border-white/15 rounded-2xl flex-1 shadow-2xl transition-all">
-                                                        <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider block mb-0.5">
-                                                            {article.category}
-                                                        </span>
-                                                        <h4 className="text-xs sm:text-sm font-semibold text-white line-clamp-2 leading-snug group-hover:text-amber-200 transition-colors">
-                                                            {article.title}
-                                                        </h4>
-                                                    </div>
-                                                </Link>
+                                                        {/* Body: Sleek Overlapping Glass Card */}
+                                                        <div className="-ml-4 pl-7 pr-4 py-3.5 bg-black/75 hover:bg-black/85 backdrop-blur-md border border-white/15 rounded-2xl flex-1 shadow-2xl transition-all">
+                                                            <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider block mb-0.5">
+                                                                {article.category}
+                                                            </span>
+                                                            <h4 className="text-xs sm:text-sm font-semibold text-white line-clamp-2 leading-snug group-hover:text-amber-200 transition-colors">
+                                                                {article.title}
+                                                            </h4>
+                                                        </div>
+                                                    </Link>
+                                                </div>
                                             );
                                         })}
                                     </div>
