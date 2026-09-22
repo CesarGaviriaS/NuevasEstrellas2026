@@ -174,9 +174,9 @@ export default function HeroV2() {
     };
 
     return (
-        <section className="relative min-h-[620px] lg:h-[88vh] lg:min-h-[680px] lg:max-h-[1080px] overflow-hidden">
+        <section className="relative w-full min-h-[calc(100dvh-64px)] lg:h-[calc(100dvh-64px)] max-h-[2160px] overflow-hidden flex items-center">
             {/* Single Hero Background Image */}
-            <div className="relative w-full h-full min-h-[620px] lg:min-h-full">
+            <div className="absolute inset-0 w-full h-full">
                 <Image
                     src="/galeria/entrenado_mirando_horizonte.png"
                     alt="Torneo Nuevas Estrellas Electrolit 2026"
@@ -189,8 +189,8 @@ export default function HeroV2() {
             </div>
 
             {/* Content Container */}
-            <div className="absolute inset-0 z-20 flex items-center">
-                <div className="mx-auto w-full responsive-padding py-12 lg:py-0">
+            <div className="relative z-20 w-full py-8 sm:py-12 lg:py-0">
+                <div className="mx-auto w-full responsive-padding">
                     <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                         {/* Left Column: Hero Main Presentation */}
                         <div className="lg:col-span-7 text-white space-y-5">
