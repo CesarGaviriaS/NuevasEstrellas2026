@@ -69,14 +69,12 @@ export default function NavbarV2() {
                         </div>
 
                         {/* CTA buttons */}
-                        <a
-                            href={WHATSAPP_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <Link
+                            href="/inscripciones"
                             className="px-5 py-2 rounded-full font-semibold text-sm transition-all duration-300 inline-block text-center whitespace-nowrap bg-white text-primary hover:bg-gray-100 shadow-sm"
                         >
                             Inscribir Equipo
-                        </a>
+                        </Link>
                         <Link
                             href="/anuncios-notas"
                             className="px-5 py-2 rounded-full font-medium text-sm transition-all duration-300 inline-block text-center whitespace-nowrap bg-white/10 text-white hover:bg-white/20 shadow-sm"
@@ -101,15 +99,13 @@ export default function NavbarV2() {
                                 </a>
                             ))}
                             <div className="space-y-2 pt-4 border-t border-white/15">
-                                <a
-                                    href={WHATSAPP_URL}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <Link
+                                    href="/inscripciones"
                                     className="block py-3 px-4 bg-white text-primary hover:bg-gray-100 rounded-lg text-center font-semibold transition-colors shadow-sm"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     Inscribir Equipo
-                                </a>
+                                </Link>
                                 <Link
                                     href="/anuncios-notas"
                                     className="block py-3 px-4 bg-white/10 text-white hover:bg-white/20 rounded-lg text-center font-medium transition-colors shadow-sm"
