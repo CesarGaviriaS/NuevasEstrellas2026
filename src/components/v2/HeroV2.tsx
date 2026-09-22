@@ -181,7 +181,7 @@ export default function HeroV2() {
                     src="/galeria/entrenado_mirando_horizonte.png"
                     alt="Torneo Nuevas Estrellas Electrolit 2026"
                     fill
-                    className="object-cover object-center"
+                    className="object-cover object-[37.5%_center] lg:object-center"
                     priority
                     sizes="100vw"
                 />
