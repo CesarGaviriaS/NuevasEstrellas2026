@@ -1,60 +1,193 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getAnunciosYNotasData, AnunciosYNotasState, getStaticAnunciosYNotas } from '@/lib/wordpress';
-import { ArrowRight, Newspaper, ChevronDown, ChevronUp } from 'lucide-react';
+import { getAnunciosYNotasData, stripHtml } from '@/lib/wordpress';
+import { Newspaper } from 'lucide-react';
+
+interface ArticleItem {
+    id: string;
+    title: string;
+    imageUrl: string;
+    linkUrl: string;
+    category: string;
+}
 
 export default function HeroV2() {
-    const [newsData, setNewsData] = useState<AnunciosYNotasState>(getStaticAnunciosYNotas());
+    const [articles, setArticles] = useState<ArticleItem[]>([]);
     const [isLoadingNews, setIsLoadingNews] = useState(true);
+    const [page, setPage] = useState(1);
+    const [hasMoreWP, setHasMoreWP] = useState(true);
+    const [isLoadingMore, setIsLoadingMore] = useState(false);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+    const seenUrlsRef = useRef<Set<string>>(new Set());
 
+    // Fetch initial batch
     useEffect(() => {
         let isMounted = true;
-        async function fetchHeroNews() {
+        async function fetchInitial() {
             try {
-                const data = await getAnunciosYNotasData();
+                const res = await fetch('https://nuevasestrellas.com/cms/wp-json/wp/v2/posts?_embed&per_page=10&page=1');
+                if (res.ok) {
+                    const posts = await res.json();
+                    if (isMounted && Array.isArray(posts) && posts.length > 0) {
+                        const formatted: ArticleItem[] = [];
+                        posts.forEach((p: any) => {
+                            if (p.slug === 'hello-world') return;
+                            const title = stripHtml(p.title?.rendered || '');
+                            const linkUrl = `/anuncios-notas/${p.slug}`;
+                            const img = p._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/articulos/FutbolEntreLineas.png';
+                            
+                            // Determine category
+                            const terms = p._embedded?.['wp:term']?.[0] || [];
+                            const isCol = terms.some((t: any) => {
+                                const n = (t.name || '').toLowerCase();
+                                const s = (t.slug || '').toLowerCase();
+                                return s.includes('columna') || s.includes('futbol-entre-lineas') || s.includes('opinion') || n.includes('columna') || n.includes('fútbol');
+                            });
+                            const category = isCol ? 'Fútbol Entre Líneas' : 'Noticias';
+
+                            if (!seenUrlsRef.current.has(linkUrl)) {
+                                seenUrlsRef.current.add(linkUrl);
+                                formatted.push({
+                                    id: String(p.id),
+                                    title,
+                                    imageUrl: img,
+                                    linkUrl,
+                                    category
+                                });
+                            }
+                        });
+
+                        if (formatted.length > 0) {
+                            setArticles(formatted);
+                            setIsLoadingNews(false);
+                            return;
+                        }
+                    }
+                }
+            } catch (err) {
+                console.warn('Error fetching WP posts:', err);
+            }
+
+            // Fallback to getAnunciosYNotasData
+            try {
+                const fallbackData = await getAnunciosYNotasData();
                 if (isMounted) {
-                    setNewsData(data);
+                    const fallbackList: ArticleItem[] = [];
+                    if (fallbackData.notaPrincipal?.linkUrl && !seenUrlsRef.current.has(fallbackData.notaPrincipal.linkUrl)) {
+                        seenUrlsRef.current.add(fallbackData.notaPrincipal.linkUrl);
+                        fallbackList.push({
+                            id: 'principal',
+                            title: fallbackData.notaPrincipal.title,
+                            imageUrl: fallbackData.notaPrincipal.imageUrl,
+                            linkUrl: fallbackData.notaPrincipal.linkUrl,
+                            category: 'Fútbol Entre Líneas'
+                        });
+                    }
+                    fallbackData.anuncios.forEach((a, i) => {
+                        if (a.linkUrl && !seenUrlsRef.current.has(a.linkUrl)) {
+                            seenUrlsRef.current.add(a.linkUrl);
+                            fallbackList.push({
+                                id: `anuncio-${i}`,
+                                title: a.title,
+                                imageUrl: a.imageUrl,
+                                linkUrl: a.linkUrl,
+                                category: 'Noticias'
+                            });
+                        }
+                    });
+                    setArticles(fallbackList);
                 }
             } catch (e) {
-                console.warn('Error cargando noticias en Hero:', e);
+                console.warn('Fallback error:', e);
             } finally {
-                if (isMounted) {
-                    setIsLoadingNews(false);
-                }
+                if (isMounted) setIsLoadingNews(false);
             }
         }
-        fetchHeroNews();
+
+        fetchInitial();
         return () => {
             isMounted = false;
         };
     }, []);
 
-    // Combine all available articles without duplicates
-    const seenUrls = new Set<string>();
-    const allArticles = [];
-    if (newsData.notaPrincipal && newsData.notaPrincipal.linkUrl) {
-        seenUrls.add(newsData.notaPrincipal.linkUrl);
-        allArticles.push({
-            title: newsData.notaPrincipal.title,
-            imageUrl: newsData.notaPrincipal.imageUrl,
-            linkUrl: newsData.notaPrincipal.linkUrl,
-            category: 'Fútbol Entre Líneas'
-        });
-    }
-    newsData.anuncios.forEach((a) => {
-        if (a.linkUrl && !seenUrls.has(a.linkUrl)) {
-            seenUrls.add(a.linkUrl);
-            allArticles.push({
-                title: a.title,
-                imageUrl: a.imageUrl,
-                linkUrl: a.linkUrl,
-                category: 'Noticias'
-            });
+    // Function to load more articles on scroll
+    const loadMoreArticles = async () => {
+        if (isLoadingMore) return;
+        setIsLoadingMore(true);
+
+        if (hasMoreWP) {
+            try {
+                const nextPage = page + 1;
+                const res = await fetch(`https://nuevasestrellas.com/cms/wp-json/wp/v2/posts?_embed&per_page=10&page=${nextPage}`);
+                if (res.ok) {
+                    const posts = await res.json();
+                    if (Array.isArray(posts) && posts.length > 0) {
+                        const newItems: ArticleItem[] = [];
+                        posts.forEach((p: any) => {
+                            if (p.slug === 'hello-world') return;
+                            const title = stripHtml(p.title?.rendered || '');
+                            const linkUrl = `/anuncios-notas/${p.slug}`;
+                            const img = p._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/articulos/FutbolEntreLineas.png';
+                            
+                            const terms = p._embedded?.['wp:term']?.[0] || [];
+                            const isCol = terms.some((t: any) => {
+                                const n = (t.name || '').toLowerCase();
+                                const s = (t.slug || '').toLowerCase();
+                                return s.includes('columna') || s.includes('futbol-entre-lineas') || s.includes('opinion') || n.includes('columna') || n.includes('fútbol');
+                            });
+                            const category = isCol ? 'Fútbol Entre Líneas' : 'Noticias';
+
+                            if (!seenUrlsRef.current.has(linkUrl)) {
+                                seenUrlsRef.current.add(linkUrl);
+                                newItems.push({
+                                    id: String(p.id),
+                                    title,
+                                    imageUrl: img,
+                                    linkUrl,
+                                    category
+                                });
+                            }
+                        });
+
+                        if (newItems.length > 0) {
+                            setArticles((prev) => [...prev, ...newItems]);
+                            setPage(nextPage);
+                            setIsLoadingMore(false);
+                            return;
+                        }
+                    }
+                    setHasMoreWP(false);
+                } else {
+                    setHasMoreWP(false);
+                }
+            } catch (e) {
+                setHasMoreWP(false);
+            }
         }
-    });
+
+        // Infinite loop expansion if WP has no more pages
+        if (articles.length > 0) {
+            setArticles((prev) => [
+                ...prev,
+                ...articles.map((item, i) => ({
+                    ...item,
+                    id: `${item.id}-loop-${Date.now()}-${i}`
+                }))
+            ]);
+        }
+        setIsLoadingMore(false);
+    };
+
+    // Scroll listener for infinite scroll
+    const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+        const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
+        if (scrollHeight - scrollTop - clientHeight < 50) {
+            loadMoreArticles();
+        }
+    };
 
     return (
         <section className="relative min-h-[620px] lg:h-[88vh] lg:min-h-[680px] lg:max-h-[1080px] overflow-hidden">
@@ -105,10 +238,10 @@ export default function HeroV2() {
                             </div>
                         </div>
 
-                        {/* Right Column: Sleek Mini-News Widget */}
+                        {/* Right Column: Sleek Mini-News Widget (2.5 items height + infinite scroll) */}
                         <div className="lg:col-span-5 flex justify-center lg:justify-end">
-                            <div className="w-full max-w-md bg-black/40 backdrop-blur-md rounded-2xl p-5 border border-white/10 shadow-xl text-white">
-                                <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-2">
+                            <div className="w-full max-w-md bg-black/40 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/10 shadow-xl text-white">
+                                <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-1">
                                     <div className="flex items-center gap-2">
                                         <Newspaper className="w-4 h-4 text-amber-300" />
                                         <span className="text-xs font-bold uppercase tracking-wider text-white">
@@ -123,21 +256,26 @@ export default function HeroV2() {
                                     </Link>
                                 </div>
 
-                                {isLoadingNews && allArticles.length === 0 ? (
+                                {isLoadingNews && articles.length === 0 ? (
                                     <div className="py-8 text-center text-xs text-white/60">
                                         Cargando publicaciones...
                                     </div>
-                                ) : allArticles.length === 0 ? (
+                                ) : articles.length === 0 ? (
                                     <div className="py-6 text-center text-xs text-white/60">
                                         Próximamente más noticias oficiales.
                                     </div>
                                 ) : (
-                                    <div className="divide-y divide-white/10 max-h-[300px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-white/20">
-                                        {allArticles.map((article, idx) => (
+                                    /* Container sized exactly for 2.5 cards height (~195px) */
+                                    <div
+                                        ref={scrollContainerRef}
+                                        onScroll={handleScroll}
+                                        className="h-[195px] overflow-y-auto divide-y divide-white/10 pr-1.5 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent hover:scrollbar-thumb-amber-300/50 transition-colors"
+                                    >
+                                        {articles.map((article, idx) => (
                                             <Link
-                                                key={idx}
+                                                key={`${article.id}-${idx}`}
                                                 href={article.linkUrl}
-                                                className="flex items-center gap-3.5 py-3 hover:bg-white/5 rounded-xl px-2 transition-all group"
+                                                className="flex items-center gap-3 py-2.5 hover:bg-white/5 rounded-xl px-2 transition-all group"
                                             >
                                                 {/* 16:9 Thumbnail */}
                                                 <div className="relative w-24 sm:w-28 aspect-video rounded-lg overflow-hidden flex-shrink-0 bg-white/5 border border-white/10">
@@ -150,15 +288,21 @@ export default function HeroV2() {
                                                     />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
-                                                    <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider block mb-1">
+                                                    <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider block mb-0.5">
                                                         {article.category}
                                                     </span>
-                                                    <h4 className="text-xs sm:text-sm font-semibold text-white line-clamp-2 leading-snug group-hover:text-amber-200 transition-colors">
+                                                    <h4 className="text-xs font-semibold text-white line-clamp-2 leading-snug group-hover:text-amber-200 transition-colors">
                                                         {article.title}
                                                     </h4>
                                                 </div>
                                             </Link>
                                         ))}
+
+                                        {isLoadingMore && (
+                                            <div className="py-2 text-center text-[10px] text-white/50">
+                                                Cargando más...
+                                            </div>
+                                        )}
                                     </div>
                                 )}
                             </div>
