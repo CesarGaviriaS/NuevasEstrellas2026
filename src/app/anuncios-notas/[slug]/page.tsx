@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import NavbarV2 from '@/components/v2/NavbarV2';
 import Footer from '@/components/sections/Footer';
 import PostReader from '@/components/sections/PostReader';

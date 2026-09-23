@@ -3,6 +3,8 @@ import { sponsors as staticSponsors, contactInfo as staticContactInfo, heroSlide
 import { TORNEOS, TournamentEdition, Sponsor, Venue, Document } from './dataTorneos';
 import { CategoryData } from './tournamentData';
 
+export type { Anuncio, NotaPrincipal, NotaSecundaria };
+
 export interface WordPressMedia {
     id: number;
     source_url: string;

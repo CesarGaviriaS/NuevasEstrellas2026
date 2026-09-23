@@ -162,6 +162,7 @@ export default function NavbarV2() {
                                 >
                                     {link.label}
                                 </a>
+                            ))}
                         </nav>
                     </div>
                 )}

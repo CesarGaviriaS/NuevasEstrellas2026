@@ -7,6 +7,9 @@ import { heroSlides } from '@/lib/data';
 interface HeroSectionProps {
     title?: string;
     subtitle?: string;
+    slide1?: string;
+    slide2?: string;
+    slide3?: string;
 }
 
 export default function HeroSection({
