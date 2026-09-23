@@ -106,9 +106,9 @@ export default function GaleriaV2() {
                     {/* Main Slide Presentation */}
                     <div className="relative">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-                            {/* Slide Image (16:9 Aspect Ratio with vibrant blurred background fill) */}
-                            <div className="lg:col-span-8 relative aspect-video w-full rounded-2xl overflow-hidden bg-gray-100 shadow-md group">
-                                {/* Blurred background version of the same image */}
+                            {/* Slide Image (16:9 Aspect Ratio with zoomed & blurred background fill) */}
+                            <div className="lg:col-span-8 relative aspect-video w-full rounded-2xl overflow-hidden shadow-lg group bg-black/5">
+                                {/* Capa de fondo: La misma imagen con zoom y desenfoque para rellenar los bordes */}
                                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                                     <Image
                                         key={`bg-${activePhoto.src}`}
@@ -116,20 +116,19 @@ export default function GaleriaV2() {
                                         alt=""
                                         fill
                                         aria-hidden="true"
-                                        className="object-cover blur-3xl scale-135 opacity-90 filter brightness-105 saturate-125 transition-all duration-700"
+                                        className="object-cover scale-125 blur-lg brightness-95 transition-all duration-500"
                                         sizes="(max-width: 1024px) 100vw, 70vw"
                                     />
-                                    <div className="absolute inset-0 bg-white/10 backdrop-blur-[2px]" />
                                 </div>
 
-                                {/* Foreground sharp image (object-contain to display full photo) */}
+                                {/* Capa frontal: La imagen completa nítida sin recortar */}
                                 <Image
                                     key={`fg-${activePhoto.src}`}
                                     src={activePhoto.src}
                                     alt={activePhoto.title}
                                     fill
                                     priority
-                                    className="relative z-10 object-contain drop-shadow-md transition-transform duration-500 group-hover:scale-[1.02]"
+                                    className="relative z-10 object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]"
                                     sizes="(max-width: 1024px) 100vw, 70vw"
                                 />
                                 
