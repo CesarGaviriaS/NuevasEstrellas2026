@@ -11,6 +11,7 @@ import NoticiasCMSV2 from '@/components/v2/NoticiasCMSV2';
 import PromotoraV2 from '@/components/v2/PromotoraV2';
 import PatrocinadoresV2 from '@/components/v2/PatrocinadoresV2';
 import GaleriaV2 from '@/components/v2/GaleriaV2';
+import HistoriasExitoV2 from '@/components/v2/HistoriasExitoV2';
 import FooterV2 from '@/components/v2/FooterV2';
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function Torneo2026Page() {
                 <PromotoraV2 />
                 <GaleriaV2 />
                 <ScoutsV2 />
+                <HistoriasExitoV2 />
                 <CapacitacionesV2 />
                 <TorneoIntroV2 />
                 <CategoriasV2 />
