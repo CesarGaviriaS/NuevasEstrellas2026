@@ -1,5 +1,4 @@
-import { Metadata } from 'next';
-import Navbar from '@/components/sections/Navbar';
+import NavbarV2 from '@/components/v2/NavbarV2';
 import Footer from '@/components/sections/Footer';
 import PostReader from '@/components/sections/PostReader';
 import { getPostBySlug, getAllPostSlugs, stripHtml, getFeaturedImageUrl } from '@/lib/wordpress';
@@ -83,9 +82,9 @@ export default async function SinglePostPage({ params }: Props) {
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-50">
-            <Navbar />
+            <NavbarV2 />
             {schemaData && <JsonLd data={schemaData} />}
-            <main className="flex-grow pt-20">
+            <main className="flex-grow pt-[64px]">
                 <PostReader slug={slug} initialPost={post} />
             </main>
             <Footer />

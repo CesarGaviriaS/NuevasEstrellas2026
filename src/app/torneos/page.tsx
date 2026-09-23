@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Navbar from '@/components/sections/Navbar';
+import NavbarV2 from '@/components/v2/NavbarV2';
 import Footer from '@/components/sections/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, Calendar } from 'lucide-react';
@@ -24,8 +24,8 @@ export default function TorneosPage() {
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-50">
-            <Navbar />
-            <main className="flex-grow pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+            <NavbarV2 />
+            <main className="flex-grow pt-[64px] pb-12 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto space-y-12">
 
                     {/* Header */}

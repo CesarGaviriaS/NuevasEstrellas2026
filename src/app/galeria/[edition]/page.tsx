@@ -2,7 +2,7 @@ import PaginatedGallery from '@/components/sections/PaginatedGallery';
 
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import Navbar from '@/components/sections/Navbar';
+import NavbarV2 from '@/components/v2/NavbarV2';
 import Footer from '@/components/sections/Footer';
 import { GALLERY_DATA } from '@/lib/dataGaleria';
 
@@ -30,9 +30,9 @@ export default async function GalleryPage({ params }: Props) {
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-50">
-            <Navbar />
+            <NavbarV2 />
 
-            <main className="flex-grow pt-28 pb-12 px-4 md:px-8 max-w-7xl mx-auto w-full">
+            <main className="flex-grow pt-[64px] pb-12 px-4 md:px-8 max-w-7xl mx-auto w-full">
                 {/* Header */}
                 <div className="mb-8">
                     <Link

@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import Navbar from '@/components/sections/Navbar';
+import NavbarV2 from '@/components/v2/NavbarV2';
 import Footer from '@/components/sections/Footer';
 import EditionDetailedView from '@/components/sections/EditionDetailedView';
 import JsonLd from '@/components/JsonLd';
@@ -46,8 +46,8 @@ export default async function EditionPage({ params }: Props) {
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-50">
-            <Navbar />
-            <main className="flex-grow pt-24 pb-12 px-2 lg:px-1 xl:px-0 max-w-7xl mx-auto w-full">
+            <NavbarV2 />
+            <main className="flex-grow pt-[64px] pb-12 px-2 lg:px-1 xl:px-0 max-w-7xl mx-auto w-full">
                 <JsonLd data={{
                     "@context": "https://schema.org",
                     "@type": "SportsEvent",

@@ -4,12 +4,9 @@ import { useState } from 'react';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import NewsTicker from '@/components/ui/NewsTicker';
 
 export default function NavbarV2() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-    const WHATSAPP_URL = "https://wa.me/573132644781?text=" + encodeURIComponent("¡Hola! Deseo recibir información oficial para inscribir a mi equipo en el Torneo Nuevas Estrellas Electrolit 2026 en Yopal.");
 
     const navLinks = [
         { href: "/#promotora", label: "Sobre Nosotros" },
@@ -57,26 +54,16 @@ export default function NavbarV2() {
                     </button>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden xl:flex gap-3 items-center flex-shrink-0">
-                        <div className="flex gap-5 items-center mr-3">
-                            {navLinks.map((link) => (
-                                <a
-                                    key={link.href}
-                                    href={link.href}
-                                    className="hover:text-amber-300 transition-colors font-medium text-sm whitespace-nowrap text-white"
-                                >
-                                    {link.label}
-                                </a>
-                            ))}
-                        </div>
-
-                        {/* CTA button */}
-                        <Link
-                            href="/inscripciones"
-                            className="px-5 py-2 rounded-full font-semibold text-sm transition-all duration-300 inline-block text-center whitespace-nowrap bg-white text-primary hover:bg-gray-100 shadow-sm"
-                        >
-                            Inscribir Equipo
-                        </Link>
+                    <nav className="hidden xl:flex gap-6 items-center flex-shrink-0">
+                        {navLinks.map((link) => (
+                            <a
+                                key={link.href}
+                                href={link.href}
+                                className="hover:text-amber-300 transition-colors font-medium text-sm whitespace-nowrap text-white"
+                            >
+                                {link.label}
+                            </a>
+                        ))}
                     </nav>
                 </div>
 
@@ -94,15 +81,6 @@ export default function NavbarV2() {
                                     {link.label}
                                 </a>
                             ))}
-                            <div className="space-y-2 pt-4 border-t border-white/15">
-                                <Link
-                                    href="/inscripciones"
-                                    className="block py-3 px-4 bg-white text-primary hover:bg-gray-100 rounded-lg text-center font-semibold transition-colors shadow-sm"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    Inscribir Equipo
-                                </Link>
-                            </div>
                         </nav>
                     </div>
                 )}
