@@ -10,7 +10,7 @@ const sponsors2026 = [
 
 export default function PatrocinadoresV2() {
     return (
-        <section className="py-20 bg-midnightblue text-white">
+        <section id="patrocinadores" className="py-20 bg-midnightblue text-white">
             <div className="mx-auto w-full responsive-padding">
                 <div className="text-center pb-12 max-w-3xl mx-auto">
                     <span className="inline-block px-4 py-1.5 bg-secondary/30 text-white font-bold rounded-full text-xs sm:text-sm uppercase tracking-wider mb-3">

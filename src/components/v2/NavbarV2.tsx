@@ -12,13 +12,14 @@ export default function NavbarV2() {
     const WHATSAPP_URL = "https://wa.me/573132644781?text=" + encodeURIComponent("¡Hola! Deseo recibir información oficial para inscribir a mi equipo en el Torneo Nuevas Estrellas Electrolit 2026 en Yopal.");
 
     const navLinks = [
-        { href: "/#torneo", label: "El Torneo" },
+        { href: "/#promotora", label: "Sobre Nosotros" },
+        { href: "/#scouts", label: "Talento & Scouts" },
+        { href: "/#torneo", label: "El Torneo 2026" },
         { href: "/#categorias", label: "Categorías" },
         { href: "/#inscripciones", label: "Inscripciones" },
         { href: "/#sedes", label: "Sedes" },
-        { href: "/#scouts", label: "Scouts" },
         { href: "/#noticias", label: "Noticias" },
-        { href: "/#promotora", label: "La Promotora" },
+        { href: "/#patrocinadores", label: "Patrocinadores" },
     ];
 
     return (

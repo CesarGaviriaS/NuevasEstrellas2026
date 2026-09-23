@@ -23,14 +23,14 @@ export default function Torneo2026Page() {
             <NavbarV2 />
             <main className="flex-1 pt-[64px]">
                 <HeroV2 />
+                <PromotoraV2 />
+                <ScoutsV2 />
+                <CapacitacionesV2 />
                 <TorneoIntroV2 />
                 <CategoriasV2 />
                 <CostosCalendarioV2 />
                 <SedesV2 />
-                <ScoutsV2 />
-                <CapacitacionesV2 />
                 <NoticiasCMSV2 />
-                <PromotoraV2 />
                 <PatrocinadoresV2 />
             </main>
             <FooterV2 />
