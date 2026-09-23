@@ -76,16 +76,16 @@ export default function InstagramSidebarCarousel() {
                     <button
                         onClick={handlePrev}
                         aria-label="Diapositiva anterior"
-                        className="pointer-events-auto p-2 rounded-full bg-black/60 hover:bg-black/90 text-white backdrop-blur-sm transition-all hover:scale-110 shadow-md"
+                        className="pointer-events-auto p-1 text-white hover:text-gray-200 transition-all hover:scale-125 focus:outline-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                     >
-                        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <ChevronLeft className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.5]" />
                     </button>
                     <button
                         onClick={handleNext}
                         aria-label="Diapositiva siguiente"
-                        className="pointer-events-auto p-2 rounded-full bg-black/60 hover:bg-black/90 text-white backdrop-blur-sm transition-all hover:scale-110 shadow-md"
+                        className="pointer-events-auto p-1 text-white hover:text-gray-200 transition-all hover:scale-125 focus:outline-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                     >
-                        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <ChevronRight className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.5]" />
                     </button>
                 </div>
             </div>
