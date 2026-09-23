@@ -205,9 +205,16 @@ export default function CostosCalendarioV2() {
                                         <a
                                             href="/documentos2026/AUTORIZACIÓN DE USO DE IMAGEN.pdf"
                                             download
-                                            className="w-full inline-flex items-center justify-center gap-1 py-1.5 px-2.5 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-lg text-xs font-bold transition-colors"
+                                            className="flex-1 inline-flex items-center justify-center gap-1 py-1.5 px-2.5 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-lg text-xs font-bold transition-colors"
                                         >
-                                            <Download className="w-3.5 h-3.5" /> Descargar PDF
+                                            <Download className="w-3.5 h-3.5" /> PDF
+                                        </a>
+                                        <a
+                                            href="/documentos2026/AUTORIZACIÓN DE USO DE IMAGEN.docx"
+                                            download
+                                            className="flex-1 inline-flex items-center justify-center gap-1 py-1.5 px-2.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-lg text-xs font-bold transition-colors"
+                                        >
+                                            <Download className="w-3.5 h-3.5" /> Word
                                         </a>
                                     </div>
                                 </div>
