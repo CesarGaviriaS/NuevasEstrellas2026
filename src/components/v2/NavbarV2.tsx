@@ -32,7 +32,7 @@ export default function NavbarV2() {
         <>
             <header className="fixed top-0 left-0 right-0 z-50 bg-[#000035] text-white shadow-lg font-oswald tracking-wide">
                 <div className="mx-auto w-full responsive-padding py-2.5 flex items-center justify-between">
-                    <Link href="/" className="flex items-center gap-2.5 cursor-pointer hover:opacity-90 transition-opacity flex-shrink-0">
+                    <Link href="/" className="flex items-center gap-3 cursor-pointer hover:opacity-90 transition-opacity flex-shrink-0">
                         <div className="relative h-12 w-12 flex-shrink-0">
                             <Image
                                 src="/logo-copa-simple.png"
@@ -42,14 +42,9 @@ export default function NavbarV2() {
                                 sizes="(max-width: 300px) 100px, 100px"
                             />
                         </div>
-                        <div className="hidden lg:flex flex-col">
-                            <span className="text-2xl font-bold whitespace-nowrap leading-tight text-white tracking-tight">
-                                Nuevas Estrellas
-                            </span>
-                            <span className="text-xs sm:text-sm font-bold whitespace-nowrap text-amber-300 tracking-wider">
-                                Electrolit 2026 · Yopal
-                            </span>
-                        </div>
+                        <span className="hidden lg:block text-2xl xl:text-3xl font-bold whitespace-nowrap leading-none text-white tracking-tight">
+                            Nuevas Estrellas
+                        </span>
                     </Link>
 
                     {/* Hamburger menu */}
