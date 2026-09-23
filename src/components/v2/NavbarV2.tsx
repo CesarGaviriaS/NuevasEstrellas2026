@@ -69,18 +69,12 @@ export default function NavbarV2() {
                             ))}
                         </div>
 
-                        {/* CTA buttons */}
+                        {/* CTA button */}
                         <Link
                             href="/inscripciones"
                             className="px-5 py-2 rounded-full font-semibold text-sm transition-all duration-300 inline-block text-center whitespace-nowrap bg-white text-primary hover:bg-gray-100 shadow-sm"
                         >
                             Inscribir Equipo
-                        </Link>
-                        <Link
-                            href="/anuncios-notas"
-                            className="px-5 py-2 rounded-full font-medium text-sm transition-all duration-300 inline-block text-center whitespace-nowrap bg-white/10 text-white hover:bg-white/20 shadow-sm"
-                        >
-                            Fútbol Entre Líneas
                         </Link>
                     </nav>
                 </div>
@@ -106,13 +100,6 @@ export default function NavbarV2() {
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     Inscribir Equipo
-                                </Link>
-                                <Link
-                                    href="/anuncios-notas"
-                                    className="block py-3 px-4 bg-white/10 text-white hover:bg-white/20 rounded-lg text-center font-medium transition-colors shadow-sm"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    Fútbol Entre Líneas
                                 </Link>
                             </div>
                         </nav>
