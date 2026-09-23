@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Camera, ExternalLink, ChevronLeft, ChevronRight, Award, Trophy } from 'lucide-react';
@@ -74,6 +74,7 @@ const galleryPhotos = [
 
 export default function GaleriaV2() {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
     const activePhoto = galleryPhotos[currentIndex];
 
@@ -84,6 +85,14 @@ export default function GaleriaV2() {
     const handleNext = () => {
         setCurrentIndex((prev) => (prev === galleryPhotos.length - 1 ? 0 : prev + 1));
     };
+
+    useEffect(() => {
+        thumbnailRefs.current[currentIndex]?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center'
+        });
+    }, [currentIndex]);
 
     return (
         <section id="galeria" className="py-20 bg-[#f8fafc] border-t border-gray-100">
@@ -149,11 +158,6 @@ export default function GaleriaV2() {
                                         <ChevronRight className="w-8 h-8 sm:w-10 sm:h-10 stroke-[2.5]" />
                                     </button>
                                 </div>
-
-                                {/* Current photo counter */}
-                                <div className="absolute z-20 top-4 left-4 text-white font-bold text-sm sm:text-base tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                                    {currentIndex + 1} / {galleryPhotos.length}
-                                </div>
                             </div>
 
                             {/* Slide Figcaption */}
@@ -179,17 +183,18 @@ export default function GaleriaV2() {
                         </div>
                     </div>
 
-                    {/* Carousel Thumbnails Row */}
+                    {/* Carousel Thumbnails Row (Horizontally scrollable and scalable for any number of images) */}
                     <div className="mt-8 pt-6 border-t border-gray-100">
-                        <div className="grid grid-cols-4 sm:grid-cols-8 gap-3 sm:gap-4">
+                        <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-2 pt-1 px-1 scroll-smooth focus:outline-none no-scrollbar">
                             {galleryPhotos.map((photo, index) => {
                                 const isActive = currentIndex === index;
                                 return (
                                     <button
                                         key={photo.id}
+                                        ref={(el) => { thumbnailRefs.current[index] = el; }}
                                         onClick={() => setCurrentIndex(index)}
                                         aria-label={`Ver diapositiva ${index + 1}: ${photo.title}`}
-                                        className={`group relative aspect-square rounded-xl overflow-hidden cursor-pointer transition-all duration-300 focus:outline-none ${
+                                        className={`group relative flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-xl overflow-hidden cursor-pointer transition-all duration-300 focus:outline-none ${
                                             isActive
                                                 ? 'ring-4 ring-primary shadow-lg scale-105 opacity-100'
                                                 : 'opacity-70 hover:opacity-100 hover:scale-102 hover:ring-2 hover:ring-primary/50'
