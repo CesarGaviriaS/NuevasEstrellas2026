@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function FooterV2() {
-    const WHATSAPP_URL = "https://wa.me/573132644781?text=" + encodeURIComponent("¡Hola! Deseo más información sobre el Torneo Nuevas Estrellas Electrolit 2026.");
+    const WHATSAPP_URL = "https://wa.me/573002125586?text=" + encodeURIComponent("¡Hola! Deseo más información sobre el Torneo Nuevas Estrellas Electrolit 2026.");
 
     return (
         <footer className="bg-primary text-white py-14">
@@ -22,8 +22,11 @@ export default function FooterV2() {
                         <h3 className="text-2xl sm:text-4xl font-bold mb-2">
                             ¡Tú pones el talento, nosotros el camino!
                         </h3>
-                        <p className="text-lg sm:text-xl font-medium text-amber-300">
+                        <p className="text-lg sm:text-xl font-medium text-amber-300 mb-2">
                             Torneo Nuevas Estrellas Electrolit 2026 · Yopal, Casanare
+                        </p>
+                        <p className="text-sm font-semibold text-white/90">
+                            Línea Oficial de Contacto e Inscripciones: <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-amber-300 font-bold hover:underline ml-1">+57 300 212 5586</a>
                         </p>
                     </div>
 
@@ -36,7 +39,7 @@ export default function FooterV2() {
                         <Link href="/#noticias" className="hover:underline">Noticias</Link>
                         <Link href="/#promotora" className="hover:underline">La Promotora</Link>
                         <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-amber-300 font-bold hover:underline">
-                            Contacto WhatsApp
+                            WhatsApp (+57 300 212 5586)
                         </a>
                     </div>
 

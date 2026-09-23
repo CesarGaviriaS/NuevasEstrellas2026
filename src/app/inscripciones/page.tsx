@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description: 'Proceso oficial de inscripción, requisitos, fechas de pago y formatos descargables para el Torneo Nuevas Estrellas Electrolit 2026 en Yopal, Casanare.',
 };
 
-const WHATSAPP_URL = "https://wa.me/573132644781?text=" + encodeURIComponent("¡Hola! Deseo formalizar la inscripción de mi equipo para el Torneo Nuevas Estrellas Electrolit 2026 en Yopal.");
+const WHATSAPP_URL = "https://wa.me/573002125586?text=" + encodeURIComponent("¡Hola! Deseo formalizar la inscripción de mi equipo para el Torneo Nuevas Estrellas Electrolit 2026 en Yopal.");
 
 const requisitos = [
     {
@@ -42,7 +42,7 @@ export default function InscripcionesPage() {
                 <div className="mx-auto w-full responsive-padding max-w-6xl">
                     {/* Back link */}
                     <Link
-                        href="/2"
+                        href="/"
                         className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline mb-8"
                     >
                         <ArrowLeft className="w-4 h-4" /> Volver al Torneo 2026

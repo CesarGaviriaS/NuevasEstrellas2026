@@ -51,7 +51,7 @@ export const impactText = "Hemos acompañado el proceso formativo y competitivo 
 export const contactInfo = {
   representative: "Luis Francisco Lagos R.",
   email: "directornuevasestrellas@gmail.com",
-  phone: "+57 000 000 0000",
+  phone: "+57 300 212 5586",
   website: "nuevasestrellas.com"
 };
 

@@ -109,13 +109,13 @@ export default function InstagramSidebarCarousel() {
             {/* Quick Action Buttons */}
             <div className="mt-4 pt-4 border-t border-gray-100 space-y-2">
                 <a
-                    href="https://wa.me/573132644781?text=Hola,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20Torneo%20Nuevas%20Estrellas%202026"
+                    href="https://wa.me/573002125586?text=Hola,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20Torneo%20Nuevas%20Estrellas%202026"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-primary text-white hover:bg-blue-700 rounded-xl text-xs font-bold transition-colors shadow-sm"
                 >
                     <MessageCircle className="w-4 h-4" />
-                    <span>Inscribir Equipo por WhatsApp</span>
+                    <span>Inscribir Equipo por WhatsApp (+57 300 212 5586)</span>
                 </a>
             </div>
         </aside>
