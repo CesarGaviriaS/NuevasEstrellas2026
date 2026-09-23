@@ -107,20 +107,35 @@ export default function GaleriaV2() {
                     {/* Main Slide Presentation */}
                     <div className="relative">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-                            {/* Slide Image (3:2 Aspect Ratio) */}
-                            <div className="lg:col-span-8 relative aspect-[3/2] w-full rounded-2xl overflow-hidden bg-gray-950 shadow-inner group">
+                            {/* Slide Image (16:9 Aspect Ratio with blurred background fill) */}
+                            <div className="lg:col-span-8 relative aspect-video w-full rounded-2xl overflow-hidden bg-gray-950 shadow-inner group">
+                                {/* Blurred background version of the same image */}
+                                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                                    <Image
+                                        key={`bg-${activePhoto.src}`}
+                                        src={activePhoto.src}
+                                        alt=""
+                                        fill
+                                        aria-hidden="true"
+                                        className="object-cover blur-2xl scale-125 opacity-60 filter brightness-75 transition-all duration-700"
+                                        sizes="(max-width: 1024px) 100vw, 70vw"
+                                    />
+                                    <div className="absolute inset-0 bg-black/20" />
+                                </div>
+
+                                {/* Foreground sharp image (object-contain to display full photo) */}
                                 <Image
-                                    key={activePhoto.src}
+                                    key={`fg-${activePhoto.src}`}
                                     src={activePhoto.src}
                                     alt={activePhoto.title}
                                     fill
                                     priority
-                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                    className="relative z-10 object-contain drop-shadow-md transition-transform duration-500 group-hover:scale-[1.02]"
                                     sizes="(max-width: 1024px) 100vw, 70vw"
                                 />
                                 
                                 {/* Prev / Next overlay arrows */}
-                                <div className="absolute inset-x-3 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none">
+                                <div className="absolute z-20 inset-x-3 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none">
                                     <button
                                         onClick={handlePrev}
                                         aria-label="Foto anterior"
@@ -138,7 +153,7 @@ export default function GaleriaV2() {
                                 </div>
 
                                 {/* Current photo counter pill */}
-                                <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-white text-xs font-semibold">
+                                <div className="absolute z-20 top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-white text-xs font-semibold shadow-sm">
                                     {currentIndex + 1} / {galleryPhotos.length}
                                 </div>
                             </div>
