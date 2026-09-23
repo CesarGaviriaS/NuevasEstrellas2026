@@ -56,12 +56,12 @@ export default function InstagramSidebarCarousel() {
 
     return (
         <aside
-            className="bg-white rounded-3xl p-4 sm:p-5 shadow-xl border border-gray-200/90 overflow-hidden"
+            className="bg-[#f1f5f9] rounded-3xl p-4 sm:p-5 shadow-[inset_0_2px_6px_rgba(0,0,0,0.07),inset_0_-1px_2px_rgba(255,255,255,0.9)] border border-gray-200/90 overflow-hidden"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
-            {/* Carousel Slide Container with Smooth Crossfade */}
-            <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-gray-950 shadow-inner group">
+            {/* Carousel Slide Container with Inset Shadow (Efecto Incrustado) */}
+            <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-gray-950 shadow-[inset_0_4px_14px_rgba(0,0,0,0.6)] ring-1 ring-black/20 group">
                 {instagramSlides.map((slide, idx) => {
                     const isActive = currentIndex === idx;
                     return (
