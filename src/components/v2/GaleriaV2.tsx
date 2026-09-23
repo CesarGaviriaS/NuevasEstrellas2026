@@ -137,21 +137,21 @@ export default function GaleriaV2() {
                                     <button
                                         onClick={handlePrev}
                                         aria-label="Foto anterior"
-                                        className="pointer-events-auto p-2.5 sm:p-3 rounded-full bg-black/60 hover:bg-black/85 text-white backdrop-blur-sm transition-all hover:scale-110 shadow-lg"
+                                        className="pointer-events-auto p-1 text-white hover:text-gray-200 transition-all hover:scale-125 focus:outline-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                                     >
-                                        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+                                        <ChevronLeft className="w-8 h-8 sm:w-10 sm:h-10 stroke-[2.5]" />
                                     </button>
                                     <button
                                         onClick={handleNext}
                                         aria-label="Foto siguiente"
-                                        className="pointer-events-auto p-2.5 sm:p-3 rounded-full bg-black/60 hover:bg-black/85 text-white backdrop-blur-sm transition-all hover:scale-110 shadow-lg"
+                                        className="pointer-events-auto p-1 text-white hover:text-gray-200 transition-all hover:scale-125 focus:outline-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                                     >
-                                        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                                        <ChevronRight className="w-8 h-8 sm:w-10 sm:h-10 stroke-[2.5]" />
                                     </button>
                                 </div>
 
-                                {/* Current photo counter pill */}
-                                <div className="absolute z-20 top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-white text-xs font-semibold shadow-sm">
+                                {/* Current photo counter */}
+                                <div className="absolute z-20 top-4 left-4 text-white font-bold text-sm sm:text-base tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                                     {currentIndex + 1} / {galleryPhotos.length}
                                 </div>
                             </div>
