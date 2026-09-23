@@ -28,13 +28,13 @@ export default function FooterV2() {
                     </div>
 
                     <div className="flex flex-wrap justify-center gap-6 text-sm text-white/90 mb-8">
-                        <Link href="/2#torneo" className="hover:underline">El Torneo</Link>
-                        <Link href="/2#categorias" className="hover:underline">Categorías</Link>
-                        <Link href="/2#inscripciones" className="hover:underline">Inscripciones</Link>
-                        <Link href="/2#sedes" className="hover:underline">Sedes</Link>
-                        <Link href="/2#scouts" className="hover:underline">Scouts</Link>
-                        <Link href="/2#noticias" className="hover:underline">Noticias</Link>
-                        <Link href="/2#promotora" className="hover:underline">La Promotora</Link>
+                        <Link href="/#torneo" className="hover:underline">El Torneo</Link>
+                        <Link href="/#categorias" className="hover:underline">Categorías</Link>
+                        <Link href="/#inscripciones" className="hover:underline">Inscripciones</Link>
+                        <Link href="/#sedes" className="hover:underline">Sedes</Link>
+                        <Link href="/#scouts" className="hover:underline">Scouts</Link>
+                        <Link href="/#noticias" className="hover:underline">Noticias</Link>
+                        <Link href="/#promotora" className="hover:underline">La Promotora</Link>
                         <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-amber-300 font-bold hover:underline">
                             Contacto WhatsApp
                         </a>
