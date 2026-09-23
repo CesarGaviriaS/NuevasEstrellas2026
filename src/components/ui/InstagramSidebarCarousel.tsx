@@ -88,11 +88,6 @@ export default function InstagramSidebarCarousel() {
                         <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
                     </button>
                 </div>
-
-                {/* Slide title pill */}
-                <div className="absolute bottom-2 inset-x-2 bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-xl text-white text-xs font-semibold text-center truncate">
-                    {activeSlide.title}
-                </div>
             </div>
 
             {/* Dots Indicator */}
