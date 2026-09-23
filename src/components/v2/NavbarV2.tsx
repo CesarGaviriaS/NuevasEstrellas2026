@@ -10,7 +10,7 @@ export default function NavbarV2() {
     const [mobileTorneoOpen, setMobileTorneoOpen] = useState(true);
 
     const mainNavLinks = [
-        { href: "/#promotora", label: "Sobre Nosotros" },
+        { href: "/#promotora", label: "Nosotros" },
         { href: "/#galeria", label: "Galería" },
         { href: "/#scouts", label: "Talento & Scouts" },
         { href: "/#testimonios", label: "Testimonios" },
