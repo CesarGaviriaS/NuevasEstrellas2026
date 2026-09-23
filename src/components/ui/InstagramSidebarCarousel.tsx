@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight, Instagram, Sparkles, MessageCircle, ExternalLink } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
 
 const instagramSlides = [
     { id: 1, src: '/instagram-posts/PRESENTACION TORNEO NUEVAS ESTRELLAS 2026 - VERTICAL_page-0001.jpg', title: 'Torneo Nuevas Estrellas 2026' },
@@ -55,30 +55,10 @@ export default function InstagramSidebarCarousel() {
 
     return (
         <aside
-            className="bg-white rounded-3xl p-5 shadow-xl border border-gray-200/90 overflow-hidden"
+            className="bg-white rounded-3xl p-4 sm:p-5 shadow-xl border border-gray-200/90 overflow-hidden"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
-            {/* Header / Badge */}
-            <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-gray-100">
-                <div className="flex items-center gap-2">
-                    <div className="p-2 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white shadow-sm">
-                        <Instagram className="w-4 h-4" />
-                    </div>
-                    <div>
-                        <h4 className="text-sm font-bold text-midnightblue leading-tight">
-                            Presentación Oficial
-                        </h4>
-                        <span className="text-[11px] font-semibold text-gray-500">
-                            Torneo Nuevas Estrellas 2026
-                        </span>
-                    </div>
-                </div>
-                <div className="text-[11px] font-bold px-2.5 py-1 bg-primary/10 text-primary rounded-full">
-                    {currentIndex + 1} / {instagramSlides.length}
-                </div>
-            </div>
-
             {/* Carousel Slide Container */}
             <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-gray-950 shadow-inner group">
                 <Image
