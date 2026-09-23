@@ -43,10 +43,10 @@ export default function NavbarV2() {
                             />
                         </div>
                         <div className="hidden lg:flex flex-col">
-                            <span className="text-base font-bold whitespace-nowrap leading-tight text-white">
+                            <span className="text-lg font-bold whitespace-nowrap leading-tight text-white">
                                 Torneo Nuevas Estrellas
                             </span>
-                            <span className="text-[11px] font-semibold whitespace-nowrap text-amber-300">
+                            <span className="text-xs font-semibold whitespace-nowrap text-amber-300">
                                 Electrolit 2026 · Yopal
                             </span>
                         </div>
@@ -62,12 +62,12 @@ export default function NavbarV2() {
                     </button>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden xl:flex gap-5 2xl:gap-6 items-center flex-shrink-0">
+                    <nav className="hidden xl:flex gap-6 2xl:gap-7 items-center flex-shrink-0">
                         {mainNavLinks.map((link) => (
                             <a
                                 key={link.href}
                                 href={link.href}
-                                className="hover:text-amber-300 transition-colors font-medium text-sm whitespace-nowrap text-white py-2"
+                                className="hover:text-amber-300 transition-colors font-semibold text-[15px] 2xl:text-base whitespace-nowrap text-white py-2"
                             >
                                 {link.label}
                             </a>
@@ -76,22 +76,22 @@ export default function NavbarV2() {
                         {/* El Torneo 2026 Dropdown on Hover */}
                         <div className="relative group py-2">
                             <button
-                                className="flex items-center gap-1.5 hover:text-amber-300 transition-colors font-medium text-sm whitespace-nowrap text-white focus:outline-none"
+                                className="flex items-center gap-1.5 hover:text-amber-300 transition-colors font-semibold text-[15px] 2xl:text-base whitespace-nowrap text-white focus:outline-none"
                                 aria-expanded="false"
                                 aria-haspopup="true"
                             >
                                 <span>El Torneo 2026</span>
-                                <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 text-amber-300" />
+                                <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180 text-amber-300" />
                             </button>
 
                             {/* Dropdown Menu */}
-                            <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-1 group-hover:translate-y-0 transition-all duration-200 w-48 pointer-events-none group-hover:pointer-events-auto">
-                                <div className="bg-white text-gray-800 rounded-xl shadow-xl border border-gray-100 py-1.5 overflow-hidden ring-1 ring-black/5">
+                            <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-1 group-hover:translate-y-0 transition-all duration-200 w-52 pointer-events-none group-hover:pointer-events-auto">
+                                <div className="bg-white text-gray-800 rounded-xl shadow-xl border border-gray-100 py-2 overflow-hidden ring-1 ring-black/5">
                                     {torneoSubLinks.map((subItem) => (
                                         <a
                                             key={subItem.href}
                                             href={subItem.href}
-                                            className="block px-4 py-2.5 text-sm font-semibold text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors"
+                                            className="block px-4 py-2.5 text-[15px] font-semibold text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors"
                                         >
                                             {subItem.label}
                                         </a>
@@ -104,7 +104,7 @@ export default function NavbarV2() {
                             <a
                                 key={link.href}
                                 href={link.href}
-                                className="hover:text-amber-300 transition-colors font-medium text-sm whitespace-nowrap text-white py-2"
+                                className="hover:text-amber-300 transition-colors font-semibold text-[15px] 2xl:text-base whitespace-nowrap text-white py-2"
                             >
                                 {link.label}
                             </a>
@@ -120,7 +120,7 @@ export default function NavbarV2() {
                                 <a
                                     key={link.href}
                                     href={link.href}
-                                    className="block py-2.5 px-4 text-white font-medium hover:bg-white/10 rounded-lg transition-colors"
+                                    className="block py-3 px-4 text-white font-semibold text-lg hover:bg-white/10 rounded-lg transition-colors"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {link.label}
@@ -131,19 +131,19 @@ export default function NavbarV2() {
                             <div className="py-1">
                                 <button
                                     onClick={() => setMobileTorneoOpen(!mobileTorneoOpen)}
-                                    className="w-full flex items-center justify-between py-2.5 px-4 text-amber-300 font-bold hover:bg-white/10 rounded-lg transition-colors text-left"
+                                    className="w-full flex items-center justify-between py-3 px-4 text-amber-300 font-bold text-lg hover:bg-white/10 rounded-lg transition-colors text-left"
                                 >
                                     <span>El Torneo 2026</span>
-                                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileTorneoOpen ? 'rotate-180' : ''}`} />
+                                    <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${mobileTorneoOpen ? 'rotate-180' : ''}`} />
                                 </button>
                                 
                                 {mobileTorneoOpen && (
-                                    <div className="pl-4 pr-2 py-1 space-y-1 bg-black/15 rounded-xl mt-1">
+                                    <div className="pl-4 pr-2 py-1.5 space-y-1 bg-black/20 rounded-xl mt-1">
                                         {torneoSubLinks.map((subItem) => (
                                             <a
                                                 key={subItem.href}
                                                 href={subItem.href}
-                                                className="block py-2 px-3 text-sm text-gray-200 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                                                className="block py-2.5 px-3 text-base font-medium text-gray-200 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
                                                 onClick={() => setMobileMenuOpen(false)}
                                             >
                                                 {subItem.label}
@@ -157,7 +157,7 @@ export default function NavbarV2() {
                                 <a
                                     key={link.href}
                                     href={link.href}
-                                    className="block py-2.5 px-4 text-white font-medium hover:bg-white/10 rounded-lg transition-colors"
+                                    className="block py-3 px-4 text-white font-semibold text-lg hover:bg-white/10 rounded-lg transition-colors"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {link.label}
