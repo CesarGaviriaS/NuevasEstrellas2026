@@ -27,6 +27,7 @@ import {
     getStaticAnunciosYNotas
 } from '@/lib/wordpress';
 import ContentCard from '@/components/ContentCard';
+import InstagramSidebarCarousel from '@/components/ui/InstagramSidebarCarousel';
 
 interface PostReaderProps {
     slug: string;
@@ -126,7 +127,7 @@ export default function PostReader({ slug, initialPost }: PostReaderProps) {
 
     return (
         <article className="py-12 bg-gradient-to-b from-gray-50 to-white min-h-screen">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 {/* Botón de retorno y breadcrumb */}
                 <div className="mb-8">
@@ -139,145 +140,164 @@ export default function PostReader({ slug, initialPost }: PostReaderProps) {
                     </Link>
                 </div>
 
-                {/* Cabecera del Artículo */}
-                <header className="mb-10">
-                    {/* Badges de Categoría */}
-                    <div className="flex flex-wrap items-center gap-2 mb-4">
-                        {categories.map((cat, i) => (
-                            <span 
-                                key={i}
-                                className="bg-midnightblue text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm"
-                            >
-                                {cat}
-                            </span>
-                        ))}
-                    </div>
+                {/* Contenedor Principal en 2 columnas para PC / 1 columna para Móvil */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                    
+                    {/* Columna Principal del Artículo (Izquierda en PC) */}
+                    <div className="lg:col-span-8 bg-white p-6 sm:p-10 rounded-3xl border border-gray-100 shadow-sm">
+                        
+                        {/* Cabecera del Artículo */}
+                        <header className="mb-8">
+                            {/* Badges de Categoría */}
+                            <div className="flex flex-wrap items-center gap-2 mb-4">
+                                {categories.map((cat, i) => (
+                                    <span 
+                                        key={i}
+                                        className="bg-midnightblue text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm"
+                                    >
+                                        {cat}
+                                    </span>
+                                ))}
+                            </div>
 
-                    {/* Título Principal */}
-                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-midnightblue tracking-tight leading-tight mb-6">
-                        {title}
-                    </h1>
+                            {/* Título Principal */}
+                            <h1 className="text-2xl sm:text-4xl lg:text-4xl font-extrabold text-midnightblue tracking-tight leading-tight mb-6">
+                                {title}
+                            </h1>
 
-                    {/* Metadata: Fecha, Autor, Tiempo de lectura */}
-                    <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-gray-500 pb-6 border-b border-gray-200">
-                        <div className="flex items-center gap-1.5">
-                            <User className="h-4 w-4 text-primary" />
-                            <span className="font-medium text-gray-700">{authorName}</span>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                            <Calendar className="h-4 w-4 text-primary" />
-                            <span>{dateFormatted}</span>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                            <Clock className="h-4 w-4 text-primary" />
-                            <span>{readingTime} min de lectura</span>
-                        </div>
-                    </div>
-                </header>
+                            {/* Metadata: Fecha, Autor, Tiempo de lectura */}
+                            <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-gray-500 pb-6 border-b border-gray-200">
+                                <div className="flex items-center gap-1.5">
+                                    <User className="h-4 w-4 text-primary" />
+                                    <span className="font-medium text-gray-700">{authorName}</span>
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                    <Calendar className="h-4 w-4 text-primary" />
+                                    <span>{dateFormatted}</span>
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                    <Clock className="h-4 w-4 text-primary" />
+                                    <span>{readingTime} min de lectura</span>
+                                </div>
+                            </div>
+                        </header>
 
-                {/* Imagen Destacada */}
-                {featuredImg && (
-                    <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl mb-12 bg-gray-100 border border-gray-200">
-                        <Image
-                            src={featuredImg}
-                            alt={title}
-                            fill
-                            priority
-                            className="object-cover"
-                            sizes="(max-width: 1024px) 100vw, 896px"
-                        />
-                    </div>
-                )}
-
-                {/* Cuerpo del Artículo (Estilos editoriales para contenido de WordPress) */}
-                <div 
-                    className="wp-content prose prose-lg max-w-none text-gray-800 leading-relaxed space-y-6"
-                    dangerouslySetInnerHTML={{ __html: post.content.rendered }}
-                />
-
-                {/* Sección de Compartir */}
-                <div className="my-12 py-6 border-y border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-2 text-midnightblue font-bold text-sm">
-                        <Share2 className="h-4 w-4 text-primary" />
-                        <span>Comparte esta noticia:</span>
-                    </div>
-
-                    <div className="flex items-center gap-3">
-                        <a
-                            href={`https://api.whatsapp.com/send?text=${shareText}%20${encodeURIComponent(shareUrl)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2.5 rounded-full bg-green-50 text-green-600 hover:bg-green-600 hover:text-white transition-all shadow-sm"
-                            title="Compartir en WhatsApp"
-                        >
-                            <MessageCircle className="h-5 w-5" />
-                        </a>
-                        <a
-                            href={`https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(shareUrl)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2.5 rounded-full bg-sky-50 text-sky-500 hover:bg-sky-500 hover:text-white transition-all shadow-sm"
-                            title="Compartir en X"
-                        >
-                            <Twitter className="h-5 w-5" />
-                        </a>
-                        <a
-                            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2.5 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-all shadow-sm"
-                            title="Compartir en Facebook"
-                        >
-                            <Facebook className="h-5 w-5" />
-                        </a>
-                        <button
-                            onClick={handleCopyLink}
-                            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gray-100 text-gray-700 text-xs font-semibold hover:bg-midnightblue hover:text-white transition-all shadow-sm"
-                            title="Copiar enlace"
-                        >
-                            {copied ? (
-                                <>
-                                    <Check className="h-4 w-4 text-green-500" />
-                                    <span>¡Copiado!</span>
-                                </>
-                            ) : (
-                                <>
-                                    <Copy className="h-4 w-4" />
-                                    <span>Copiar enlace</span>
-                                </>
-                            )}
-                        </button>
-                    </div>
-                </div>
-
-                {/* Noticias Relacionadas */}
-                {relatedArticles.length > 0 && (
-                    <div className="mt-16 pt-10 border-t border-gray-100">
-                        <div className="flex items-center justify-between mb-8">
-                            <h3 className="text-2xl font-bold text-midnightblue">
-                                Más noticias del Torneo
-                            </h3>
-                            <Link 
-                                href="/anuncios-notas" 
-                                className="text-sm font-semibold text-primary hover:underline"
-                            >
-                                Ver todas →
-                            </Link>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {relatedArticles.map((art, idx) => (
-                                <ContentCard
-                                    key={idx}
-                                    title={art.title}
-                                    imageUrl={art.imageUrl}
-                                    linkUrl={art.linkUrl}
-                                    imageAlt={art.imageAlt}
+                        {/* Imagen Destacada */}
+                        {featuredImg && (
+                            <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-md mb-10 bg-gray-100 border border-gray-200">
+                                <Image
+                                    src={featuredImg}
+                                    alt={title}
+                                    fill
+                                    priority
+                                    className="object-cover"
+                                    sizes="(max-width: 1024px) 100vw, 896px"
                                 />
-                            ))}
+                            </div>
+                        )}
+
+                        {/* Cuerpo del Artículo (Estilos editoriales para contenido de WordPress) */}
+                        <div 
+                            className="wp-content prose prose-lg max-w-none text-gray-800 leading-relaxed space-y-6"
+                            dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+                        />
+
+                        {/* Sección de Compartir */}
+                        <div className="my-10 py-6 border-y border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div className="flex items-center gap-2 text-midnightblue font-bold text-sm">
+                                <Share2 className="h-4 w-4 text-primary" />
+                                <span>Comparte esta noticia:</span>
+                            </div>
+
+                            <div className="flex items-center gap-3">
+                                <a
+                                    href={`https://api.whatsapp.com/send?text=${shareText}%20${encodeURIComponent(shareUrl)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2.5 rounded-full bg-green-50 text-green-600 hover:bg-green-600 hover:text-white transition-all shadow-sm"
+                                    title="Compartir en WhatsApp"
+                                >
+                                    <MessageCircle className="h-5 w-5" />
+                                </a>
+                                <a
+                                    href={`https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(shareUrl)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2.5 rounded-full bg-sky-50 text-sky-500 hover:bg-sky-500 hover:text-white transition-all shadow-sm"
+                                    title="Compartir en X"
+                                >
+                                    <Twitter className="h-5 w-5" />
+                                </a>
+                                <a
+                                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2.5 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-all shadow-sm"
+                                    title="Compartir en Facebook"
+                                >
+                                    <Facebook className="h-5 w-5" />
+                                </a>
+                                <button
+                                    onClick={handleCopyLink}
+                                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gray-100 text-gray-700 text-xs font-semibold hover:bg-midnightblue hover:text-white transition-all shadow-sm"
+                                    title="Copiar enlace"
+                                >
+                                    {copied ? (
+                                        <>
+                                            <Check className="h-4 w-4 text-green-500" />
+                                            <span>¡Copiado!</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Copy className="h-4 w-4" />
+                                            <span>Copiar enlace</span>
+                                        </>
+                                    )}
+                                </button>
+                            </div>
                         </div>
+
+                        {/* En Móvil: Carrusel colocado al final de la nota, antes de ver más noticias */}
+                        <div className="block lg:hidden my-8">
+                            <InstagramSidebarCarousel />
+                        </div>
+
+                        {/* Noticias Relacionadas */}
+                        {relatedArticles.length > 0 && (
+                            <div className="mt-12 pt-8 border-t border-gray-100">
+                                <div className="flex items-center justify-between mb-6">
+                                    <h3 className="text-xl sm:text-2xl font-bold text-midnightblue">
+                                        Más noticias del Torneo
+                                    </h3>
+                                    <Link 
+                                        href="/anuncios-notas" 
+                                        className="text-sm font-semibold text-primary hover:underline"
+                                    >
+                                        Ver todas →
+                                    </Link>
+                                </div>
+
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {relatedArticles.map((art, idx) => (
+                                        <ContentCard
+                                            key={idx}
+                                            title={art.title}
+                                            imageUrl={art.imageUrl}
+                                            linkUrl={art.linkUrl}
+                                            imageAlt={art.imageAlt}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
-                )}
+
+                    {/* Columna Lateral (Sidebar en PC Desktop) */}
+                    <div className="hidden lg:block lg:col-span-4 sticky top-24 space-y-6">
+                        <InstagramSidebarCarousel />
+                    </div>
+
+                </div>
             </div>
         </article>
     );
