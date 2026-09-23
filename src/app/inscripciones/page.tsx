@@ -88,49 +88,121 @@ export default function InscripcionesPage() {
                             </div>
 
                             {/* Formatos Descargables */}
-                            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-sm space-y-4">
-                                <h2 className="text-2xl font-bold text-midnightblue flex items-center gap-2">
-                                    <FileText className="w-6 h-6 text-primary" /> Documentación Reglamentaria (PDF)
-                                </h2>
-                                <p className="text-sm text-gray-700 leading-relaxed">
-                                    Descarga e imprime los formatos oficiales requeridos para el congreso técnico:
-                                </p>
-                                <div className="grid sm:grid-cols-3 gap-3 pt-2">
-                                    <a
-                                        href="/pdf/PLANILLA DE INSCRIPCIÃ_N TORNEO NUEVAS ESTRELLAS ELECTROLIT 2025..pdf"
-                                        download
-                                        className="flex flex-col justify-between p-4 bg-gray-50 hover:bg-primary/5 border border-gray-200 hover:border-primary/40 rounded-2xl transition-all group"
-                                    >
-                                        <Download className="w-5 h-5 text-primary mb-3 group-hover:translate-y-0.5 transition-transform" />
-                                        <div>
-                                            <div className="font-bold text-midnightblue text-xs leading-snug">Planilla de Inscripción</div>
-                                            <div className="text-[11px] text-gray-700 mt-1">Formato PDF</div>
-                                        </div>
-                                    </a>
+                            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-sm space-y-5">
+                                <div>
+                                    <h2 className="text-2xl font-bold text-midnightblue flex items-center gap-2">
+                                        <FileText className="w-6 h-6 text-primary" /> Documentación y Planillas Oficiales 2026
+                                    </h2>
+                                    <p className="text-sm text-gray-700 leading-relaxed mt-1">
+                                        Descarga los formatos reglamentarios requeridos para el congreso técnico y registro de delegaciones (disponibles en PDF y Word):
+                                    </p>
+                                </div>
 
-                                    <a
-                                        href="/pdf/Carta de AutorizaciÃ³n y ExoneraciÃ³n de Responsabilidad.pdf"
-                                        download
-                                        className="flex flex-col justify-between p-4 bg-gray-50 hover:bg-primary/5 border border-gray-200 hover:border-primary/40 rounded-2xl transition-all group"
-                                    >
-                                        <Download className="w-5 h-5 text-primary mb-3 group-hover:translate-y-0.5 transition-transform" />
-                                        <div>
-                                            <div className="font-bold text-midnightblue text-xs leading-snug">Exoneración Responsabilidad</div>
-                                            <div className="text-[11px] text-gray-700 mt-1">Formato PDF</div>
+                                <div className="grid sm:grid-cols-2 gap-4 pt-1">
+                                    {/* Doc 1: Planilla */}
+                                    <div className="p-4 bg-gray-50 border border-gray-200 rounded-2xl flex flex-col justify-between">
+                                        <div className="mb-3">
+                                            <div className="font-bold text-midnightblue text-sm leading-snug">
+                                                Planilla de Inscripción 2026
+                                            </div>
+                                            <div className="text-xs text-gray-500 mt-1">
+                                                Formato oficial para registro de hasta 20 jugadores y cuerpo técnico
+                                            </div>
                                         </div>
-                                    </a>
+                                        <div className="flex gap-2 pt-3 border-t border-gray-200">
+                                            <a
+                                                href="/documentos2026/PLANILLA DE INSCRIPCIÓN 2026.pdf"
+                                                download
+                                                className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-xl text-xs font-bold transition-colors"
+                                            >
+                                                <Download className="w-4 h-4" /> PDF
+                                            </a>
+                                            <a
+                                                href="/documentos2026/PLANILLA DE INSCRIPCIÓN 2026.docx"
+                                                download
+                                                className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-xl text-xs font-bold transition-colors"
+                                            >
+                                                <Download className="w-4 h-4" /> Word
+                                            </a>
+                                        </div>
+                                    </div>
 
-                                    <a
-                                        href="/pdf/AUTORIZACIÃ_N DE USO DE IMAGEN TORNEO 2025.pdf"
-                                        download
-                                        className="flex flex-col justify-between p-4 bg-gray-50 hover:bg-primary/5 border border-gray-200 hover:border-primary/40 rounded-2xl transition-all group"
-                                    >
-                                        <Download className="w-5 h-5 text-primary mb-3 group-hover:translate-y-0.5 transition-transform" />
-                                        <div>
-                                            <div className="font-bold text-midnightblue text-xs leading-snug">Autorización de Imagen</div>
-                                            <div className="text-[11px] text-gray-700 mt-1">Formato PDF</div>
+                                    {/* Doc 2: Exoneración */}
+                                    <div className="p-4 bg-gray-50 border border-gray-200 rounded-2xl flex flex-col justify-between">
+                                        <div className="mb-3">
+                                            <div className="font-bold text-midnightblue text-sm leading-snug">
+                                                Autorización y Exoneración de Resp.
+                                            </div>
+                                            <div className="text-xs text-gray-500 mt-1">
+                                                Firma obligatoria de padres de familia o acudientes
+                                            </div>
                                         </div>
-                                    </a>
+                                        <div className="flex gap-2 pt-3 border-t border-gray-200">
+                                            <a
+                                                href="/documentos2026/Carta de Autorización participacion torneo 2026 y Exoneración de Responsabilidad.pdf"
+                                                download
+                                                className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-xl text-xs font-bold transition-colors"
+                                            >
+                                                <Download className="w-4 h-4" /> PDF
+                                            </a>
+                                            <a
+                                                href="/documentos2026/Carta de Autorización participacion torneo 2026 y Exoneración de Responsabilidad.docx"
+                                                download
+                                                className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-xl text-xs font-bold transition-colors"
+                                            >
+                                                <Download className="w-4 h-4" /> Word
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    {/* Doc 3: Carta Intención */}
+                                    <div className="p-4 bg-gray-50 border border-gray-200 rounded-2xl flex flex-col justify-between">
+                                        <div className="mb-3">
+                                            <div className="font-bold text-midnightblue text-sm leading-snug">
+                                                Carta de Intención de Participación
+                                            </div>
+                                            <div className="text-xs text-gray-500 mt-1">
+                                                Manifestación oficial de interés y apartado de cupo
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-2 pt-3 border-t border-gray-200">
+                                            <a
+                                                href="/documentos2026/CARTA DE INTENCIÓN DE PARTICIPACIÓN.pdf"
+                                                download
+                                                className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-xl text-xs font-bold transition-colors"
+                                            >
+                                                <Download className="w-4 h-4" /> PDF
+                                            </a>
+                                            <a
+                                                href="/documentos2026/CARTA DE INTENCIÓN DE PARTICIPACIÓN.docx"
+                                                download
+                                                className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-xl text-xs font-bold transition-colors"
+                                            >
+                                                <Download className="w-4 h-4" /> Word
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    {/* Doc 4: Uso de Imagen */}
+                                    <div className="p-4 bg-gray-50 border border-gray-200 rounded-2xl flex flex-col justify-between">
+                                        <div className="mb-3">
+                                            <div className="font-bold text-midnightblue text-sm leading-snug">
+                                                Autorización de Uso de Imagen
+                                            </div>
+                                            <div className="text-xs text-gray-500 mt-1">
+                                                Consentimiento para transmisión y cobertura fotográfica
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-2 pt-3 border-t border-gray-200">
+                                            <a
+                                                href="/documentos2026/AUTORIZACIÓN DE USO DE IMAGEN.pdf"
+                                                download
+                                                className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-xl text-xs font-bold transition-colors"
+                                            >
+                                                <Download className="w-4 h-4" /> Descargar PDF
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
