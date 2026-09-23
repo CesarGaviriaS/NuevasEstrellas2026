@@ -12,6 +12,7 @@ export default function NavbarV2() {
         { href: "/#promotora", label: "Sobre Nosotros" },
         { href: "/#galeria", label: "Galería" },
         { href: "/#scouts", label: "Talento & Scouts" },
+        { href: "/#testimonios", label: "Testimonios" },
         { href: "/#torneo", label: "El Torneo 2026" },
         { href: "/#categorias", label: "Categorías" },
         { href: "/#inscripciones", label: "Inscripciones" },
