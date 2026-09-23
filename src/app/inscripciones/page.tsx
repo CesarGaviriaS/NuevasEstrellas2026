@@ -256,7 +256,7 @@ export default function InscripcionesPage() {
                                     </div>
 
                                     <div className="text-xs text-amber-200 bg-amber-500/20 rounded-xl p-3">
-                                        📅 <strong>Congreso Técnico Virtual:</strong> 12 de Noviembre de 2026
+                                        <strong>Congreso Técnico Virtual:</strong> 12 de Noviembre de 2026
                                     </div>
                                 </div>
 

@@ -91,7 +91,6 @@ export default function GaleriaV2() {
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto pb-10">
                     <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary font-bold rounded-full text-xs sm:text-sm uppercase tracking-wider mb-3">
-                        <Camera className="w-4 h-4" />
                         Registro Histórico
                     </span>
                     <h2 className="text-3xl md:text-5xl font-bold text-midnightblue leading-tight pb-4">
@@ -174,7 +173,7 @@ export default function GaleriaV2() {
 
                                 <div className="pt-6 mt-6 border-t border-gray-100">
                                     <span className="text-xs text-gray-500 font-medium block">
-                                        📸 {activePhoto.credit}
+                                        {activePhoto.credit}
                                     </span>
                                 </div>
                             </div>
