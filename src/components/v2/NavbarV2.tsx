@@ -43,10 +43,10 @@ export default function NavbarV2() {
                             />
                         </div>
                         <div className="hidden lg:flex flex-col">
-                            <span className="text-xl font-bold whitespace-nowrap leading-tight text-white tracking-tight">
+                            <span className="text-2xl font-bold whitespace-nowrap leading-tight text-white tracking-tight">
                                 Torneo Nuevas Estrellas
                             </span>
-                            <span className="text-xs font-bold whitespace-nowrap text-amber-300 tracking-wide">
+                            <span className="text-xs sm:text-sm font-bold whitespace-nowrap text-amber-300 tracking-wider">
                                 Electrolit 2026 · Yopal
                             </span>
                         </div>
@@ -61,22 +61,22 @@ export default function NavbarV2() {
                         <Menu className="h-6 w-6" />
                     </button>
 
-                    {/* Desktop Navigation */}
-                    <nav className="hidden xl:flex gap-6 2xl:gap-8 items-center flex-shrink-0">
+                    {/* Desktop Navigation - Reduced gap and larger typography */}
+                    <nav className="hidden xl:flex gap-4 2xl:gap-5 items-center flex-shrink-0">
                         {mainNavLinks.map((link) => (
                             <a
                                 key={link.href}
                                 href={link.href}
-                                className="hover:text-amber-300 transition-colors font-bold text-base 2xl:text-[17px] leading-relaxed whitespace-nowrap text-white py-2"
+                                className="hover:text-amber-300 transition-colors font-bold text-[18px] 2xl:text-[20px] tracking-wide whitespace-nowrap text-white py-1 px-1.5"
                             >
                                 {link.label}
                             </a>
                         ))}
 
                         {/* El Torneo 2026 Dropdown on Hover */}
-                        <div className="relative group py-2">
+                        <div className="relative group py-1">
                             <button
-                                className="flex items-center gap-1.5 hover:text-amber-300 transition-colors font-bold text-base 2xl:text-[17px] leading-relaxed whitespace-nowrap text-white focus:outline-none"
+                                className="flex items-center gap-1 hover:text-amber-300 transition-colors font-bold text-[18px] 2xl:text-[20px] tracking-wide whitespace-nowrap text-white focus:outline-none px-1.5"
                                 aria-expanded="false"
                                 aria-haspopup="true"
                             >
@@ -91,7 +91,7 @@ export default function NavbarV2() {
                                         <a
                                             key={subItem.href}
                                             href={subItem.href}
-                                            className="block px-4 py-3 text-base font-bold text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors"
+                                            className="block px-4 py-2.5 text-lg font-bold text-gray-800 hover:bg-primary/5 hover:text-primary transition-colors"
                                         >
                                             {subItem.label}
                                         </a>
@@ -104,7 +104,7 @@ export default function NavbarV2() {
                             <a
                                 key={link.href}
                                 href={link.href}
-                                className="hover:text-amber-300 transition-colors font-bold text-base 2xl:text-[17px] leading-relaxed whitespace-nowrap text-white py-2"
+                                className="hover:text-amber-300 transition-colors font-bold text-[18px] 2xl:text-[20px] tracking-wide whitespace-nowrap text-white py-1 px-1.5"
                             >
                                 {link.label}
                             </a>
