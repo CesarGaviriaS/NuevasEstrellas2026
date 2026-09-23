@@ -17,30 +17,10 @@ export default function NavbarV2() {
     ];
 
     const torneoSubLinks = [
-        {
-            href: "/#torneo",
-            label: "Generalidades del Torneo",
-            desc: "Formato de competencia y reglamento",
-            icon: Trophy
-        },
-        {
-            href: "/#categorias",
-            label: "Categorías Oficiales",
-            desc: "Sub-12, Sub-14, Sub-16 y Sub-18",
-            icon: Shield
-        },
-        {
-            href: "/#inscripciones",
-            label: "Inscripciones y Costos",
-            desc: "Cronograma, cupos y premiación",
-            icon: DollarSign
-        },
-        {
-            href: "/#sedes",
-            label: "Sedes y Escenarios",
-            desc: "Canchas en Yopal, Casanare",
-            icon: MapPin
-        },
+        { href: "/#torneo", label: "Generalidades" },
+        { href: "/#categorias", label: "Categorías" },
+        { href: "/#inscripciones", label: "Inscripciones" },
+        { href: "/#sedes", label: "Sedes" },
     ];
 
     const secondaryNavLinks = [
@@ -101,43 +81,21 @@ export default function NavbarV2() {
                                 aria-haspopup="true"
                             >
                                 <span>El Torneo 2026</span>
-                                <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180 text-amber-300" />
+                                <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 text-amber-300" />
                             </button>
 
-                            {/* Dropdown Menu Bridge & Container */}
-                            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-1 group-hover:translate-y-0 transition-all duration-200 w-72 pointer-events-none group-hover:pointer-events-auto">
-                                <div className="bg-white text-gray-900 rounded-2xl shadow-2xl border border-gray-100 p-2 overflow-hidden ring-1 ring-black/5">
-                                    <div className="px-3 py-2 bg-gradient-to-r from-primary/10 to-transparent rounded-xl mb-1">
-                                        <div className="flex items-center gap-1.5 text-xs font-bold text-primary uppercase tracking-wider">
-                                            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                                            Edición Oficial 2026
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-1">
-                                        {torneoSubLinks.map((subItem) => {
-                                            const Icon = subItem.icon;
-                                            return (
-                                                <a
-                                                    key={subItem.href}
-                                                    href={subItem.href}
-                                                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-gray-50 transition-colors group/item"
-                                                >
-                                                    <div className="p-2 rounded-lg bg-primary/5 text-primary group-hover/item:bg-primary group-hover/item:text-white transition-colors flex-shrink-0 mt-0.5">
-                                                        <Icon className="w-4 h-4" />
-                                                    </div>
-                                                    <div>
-                                                        <div className="text-sm font-bold text-midnightblue group-hover/item:text-primary transition-colors leading-tight">
-                                                            {subItem.label}
-                                                        </div>
-                                                        <div className="text-xs text-gray-500 leading-tight mt-0.5">
-                                                            {subItem.desc}
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            );
-                                        })}
-                                    </div>
+                            {/* Dropdown Menu */}
+                            <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-1 group-hover:translate-y-0 transition-all duration-200 w-48 pointer-events-none group-hover:pointer-events-auto">
+                                <div className="bg-white text-gray-800 rounded-xl shadow-xl border border-gray-100 py-1.5 overflow-hidden ring-1 ring-black/5">
+                                    {torneoSubLinks.map((subItem) => (
+                                        <a
+                                            key={subItem.href}
+                                            href={subItem.href}
+                                            className="block px-4 py-2.5 text-sm font-semibold text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors"
+                                        >
+                                            {subItem.label}
+                                        </a>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -169,7 +127,7 @@ export default function NavbarV2() {
                                 </a>
                             ))}
 
-                            {/* Mobile El Torneo Collapsible Submenu */}
+                            {/* Mobile El Torneo Submenu */}
                             <div className="py-1">
                                 <button
                                     onClick={() => setMobileTorneoOpen(!mobileTorneoOpen)}
@@ -180,21 +138,17 @@ export default function NavbarV2() {
                                 </button>
                                 
                                 {mobileTorneoOpen && (
-                                    <div className="pl-4 pr-2 py-1.5 space-y-1 bg-black/15 rounded-xl mt-1">
-                                        {torneoSubLinks.map((subItem) => {
-                                            const Icon = subItem.icon;
-                                            return (
-                                                <a
-                                                    key={subItem.href}
-                                                    href={subItem.href}
-                                                    className="flex items-center gap-3 py-2 px-3 text-sm text-gray-200 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
-                                                    onClick={() => setMobileMenuOpen(false)}
-                                                >
-                                                    <Icon className="w-4 h-4 text-amber-300 flex-shrink-0" />
-                                                    <span>{subItem.label}</span>
-                                                </a>
-                                            );
-                                        })}
+                                    <div className="pl-4 pr-2 py-1 space-y-1 bg-black/15 rounded-xl mt-1">
+                                        {torneoSubLinks.map((subItem) => (
+                                            <a
+                                                key={subItem.href}
+                                                href={subItem.href}
+                                                className="block py-2 px-3 text-sm text-gray-200 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                                                onClick={() => setMobileMenuOpen(false)}
+                                            >
+                                                {subItem.label}
+                                            </a>
+                                        ))}
                                     </div>
                                 )}
                             </div>
@@ -208,7 +162,6 @@ export default function NavbarV2() {
                                 >
                                     {link.label}
                                 </a>
-                            ))}
                         </nav>
                     </div>
                 )}
