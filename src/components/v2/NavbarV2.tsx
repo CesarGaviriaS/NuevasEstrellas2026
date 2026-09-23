@@ -44,7 +44,7 @@ export default function NavbarV2() {
                         </div>
                         <div className="hidden lg:flex flex-col">
                             <span className="text-2xl font-bold whitespace-nowrap leading-tight text-white tracking-tight">
-                                Torneo Nuevas Estrellas
+                                Nuevas Estrellas
                             </span>
                             <span className="text-xs sm:text-sm font-bold whitespace-nowrap text-amber-300 tracking-wider">
                                 Electrolit 2026 · Yopal
