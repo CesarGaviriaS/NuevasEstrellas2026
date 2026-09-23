@@ -31,8 +31,8 @@ export default function NavbarV2() {
     return (
         <>
             <header className="fixed top-0 left-0 right-0 z-50 bg-[#000035] text-white shadow-lg">
-                <div className="mx-auto w-full responsive-padding py-2 flex items-center justify-between">
-                    <Link href="/" className="flex items-center gap-2 cursor-pointer hover:opacity-90 transition-opacity flex-shrink-0">
+                <div className="mx-auto w-full responsive-padding py-2.5 flex items-center justify-between">
+                    <Link href="/" className="flex items-center gap-2.5 cursor-pointer hover:opacity-90 transition-opacity flex-shrink-0">
                         <div className="relative h-12 w-12 flex-shrink-0">
                             <Image
                                 src="/logo-copa-simple.png"
@@ -43,10 +43,10 @@ export default function NavbarV2() {
                             />
                         </div>
                         <div className="hidden lg:flex flex-col">
-                            <span className="text-lg font-bold whitespace-nowrap leading-tight text-white">
+                            <span className="text-xl font-bold whitespace-nowrap leading-tight text-white tracking-tight">
                                 Torneo Nuevas Estrellas
                             </span>
-                            <span className="text-xs font-semibold whitespace-nowrap text-amber-300">
+                            <span className="text-xs font-bold whitespace-nowrap text-amber-300 tracking-wide">
                                 Electrolit 2026 · Yopal
                             </span>
                         </div>
@@ -62,12 +62,12 @@ export default function NavbarV2() {
                     </button>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden xl:flex gap-6 2xl:gap-7 items-center flex-shrink-0">
+                    <nav className="hidden xl:flex gap-6 2xl:gap-8 items-center flex-shrink-0">
                         {mainNavLinks.map((link) => (
                             <a
                                 key={link.href}
                                 href={link.href}
-                                className="hover:text-amber-300 transition-colors font-semibold text-[15px] 2xl:text-base whitespace-nowrap text-white py-2"
+                                className="hover:text-amber-300 transition-colors font-bold text-base 2xl:text-[17px] leading-relaxed whitespace-nowrap text-white py-2"
                             >
                                 {link.label}
                             </a>
@@ -76,7 +76,7 @@ export default function NavbarV2() {
                         {/* El Torneo 2026 Dropdown on Hover */}
                         <div className="relative group py-2">
                             <button
-                                className="flex items-center gap-1.5 hover:text-amber-300 transition-colors font-semibold text-[15px] 2xl:text-base whitespace-nowrap text-white focus:outline-none"
+                                className="flex items-center gap-1.5 hover:text-amber-300 transition-colors font-bold text-base 2xl:text-[17px] leading-relaxed whitespace-nowrap text-white focus:outline-none"
                                 aria-expanded="false"
                                 aria-haspopup="true"
                             >
@@ -85,13 +85,13 @@ export default function NavbarV2() {
                             </button>
 
                             {/* Dropdown Menu */}
-                            <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-1 group-hover:translate-y-0 transition-all duration-200 w-52 pointer-events-none group-hover:pointer-events-auto">
+                            <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-1 group-hover:translate-y-0 transition-all duration-200 w-56 pointer-events-none group-hover:pointer-events-auto">
                                 <div className="bg-white text-gray-800 rounded-xl shadow-xl border border-gray-100 py-2 overflow-hidden ring-1 ring-black/5">
                                     {torneoSubLinks.map((subItem) => (
                                         <a
                                             key={subItem.href}
                                             href={subItem.href}
-                                            className="block px-4 py-2.5 text-[15px] font-semibold text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors"
+                                            className="block px-4 py-3 text-base font-bold text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors"
                                         >
                                             {subItem.label}
                                         </a>
@@ -104,7 +104,7 @@ export default function NavbarV2() {
                             <a
                                 key={link.href}
                                 href={link.href}
-                                className="hover:text-amber-300 transition-colors font-semibold text-[15px] 2xl:text-base whitespace-nowrap text-white py-2"
+                                className="hover:text-amber-300 transition-colors font-bold text-base 2xl:text-[17px] leading-relaxed whitespace-nowrap text-white py-2"
                             >
                                 {link.label}
                             </a>
