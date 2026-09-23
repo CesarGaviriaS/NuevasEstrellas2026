@@ -30,7 +30,7 @@ export default function NavbarV2() {
 
     return (
         <>
-            <header className="fixed top-0 left-0 right-0 z-50 bg-[#000035] text-white shadow-lg">
+            <header className="fixed top-0 left-0 right-0 z-50 bg-[#000035] text-white shadow-lg font-oswald tracking-wide">
                 <div className="mx-auto w-full responsive-padding py-2.5 flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-2.5 cursor-pointer hover:opacity-90 transition-opacity flex-shrink-0">
                         <div className="relative h-12 w-12 flex-shrink-0">

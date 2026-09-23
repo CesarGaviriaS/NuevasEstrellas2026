@@ -63,6 +63,9 @@ export default {
           orange: '#FF4D00',
         },
       },
+      fontFamily: {
+        oswald: ['var(--font-oswald)', 'sans-serif'],
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
