@@ -30,7 +30,7 @@ export default function NavbarV2() {
 
     return (
         <>
-            <header className="fixed top-0 left-0 right-0 z-50 bg-primary text-white shadow-lg">
+            <header className="fixed top-0 left-0 right-0 z-50 bg-[#000035] text-white shadow-lg">
                 <div className="mx-auto w-full responsive-padding py-2 flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-2 cursor-pointer hover:opacity-90 transition-opacity flex-shrink-0">
                         <div className="relative h-12 w-12 flex-shrink-0">
@@ -114,7 +114,7 @@ export default function NavbarV2() {
 
                 {/* Mobile/Tablet Menu */}
                 {mobileMenuOpen && (
-                    <div className="xl:hidden bg-primary text-white shadow-2xl border-t border-white/15 animate-in slide-in-from-top-2 duration-200 max-h-[calc(100vh-64px)] overflow-y-auto">
+                    <div className="xl:hidden bg-[#000035] text-white shadow-2xl border-t border-white/15 animate-in slide-in-from-top-2 duration-200 max-h-[calc(100vh-64px)] overflow-y-auto">
                         <nav className="px-4 py-6 space-y-2 max-w-7xl mx-auto">
                             {mainNavLinks.map((link) => (
                                 <a
