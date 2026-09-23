@@ -13,6 +13,7 @@ export default function NavbarV2() {
 
     const navLinks = [
         { href: "/#promotora", label: "Sobre Nosotros" },
+        { href: "/#galeria", label: "Galería" },
         { href: "/#scouts", label: "Talento & Scouts" },
         { href: "/#torneo", label: "El Torneo 2026" },
         { href: "/#categorias", label: "Categorías" },

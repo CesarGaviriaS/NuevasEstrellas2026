@@ -10,6 +10,7 @@ import CapacitacionesV2 from '@/components/v2/CapacitacionesV2';
 import NoticiasCMSV2 from '@/components/v2/NoticiasCMSV2';
 import PromotoraV2 from '@/components/v2/PromotoraV2';
 import PatrocinadoresV2 from '@/components/v2/PatrocinadoresV2';
+import GaleriaV2 from '@/components/v2/GaleriaV2';
 import FooterV2 from '@/components/v2/FooterV2';
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function Torneo2026Page() {
             <main className="flex-1 pt-[64px]">
                 <HeroV2 />
                 <PromotoraV2 />
+                <GaleriaV2 />
                 <ScoutsV2 />
                 <CapacitacionesV2 />
                 <TorneoIntroV2 />
