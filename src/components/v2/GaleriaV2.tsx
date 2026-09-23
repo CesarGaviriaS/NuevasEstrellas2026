@@ -106,8 +106,8 @@ export default function GaleriaV2() {
                     {/* Main Slide Presentation */}
                     <div className="relative">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-                            {/* Slide Image (16:9 Aspect Ratio with blurred background fill) */}
-                            <div className="lg:col-span-8 relative aspect-video w-full rounded-2xl overflow-hidden bg-gray-950 shadow-inner group">
+                            {/* Slide Image (16:9 Aspect Ratio with vibrant blurred background fill) */}
+                            <div className="lg:col-span-8 relative aspect-video w-full rounded-2xl overflow-hidden bg-gray-100 shadow-md group">
                                 {/* Blurred background version of the same image */}
                                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                                     <Image
@@ -116,10 +116,10 @@ export default function GaleriaV2() {
                                         alt=""
                                         fill
                                         aria-hidden="true"
-                                        className="object-cover blur-2xl scale-125 opacity-60 filter brightness-75 transition-all duration-700"
+                                        className="object-cover blur-3xl scale-135 opacity-90 filter brightness-105 saturate-125 transition-all duration-700"
                                         sizes="(max-width: 1024px) 100vw, 70vw"
                                     />
-                                    <div className="absolute inset-0 bg-black/20" />
+                                    <div className="absolute inset-0 bg-white/10 backdrop-blur-[2px]" />
                                 </div>
 
                                 {/* Foreground sharp image (object-contain to display full photo) */}
