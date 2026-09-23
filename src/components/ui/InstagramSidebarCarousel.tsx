@@ -59,20 +59,31 @@ export default function InstagramSidebarCarousel() {
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
-            {/* Carousel Slide Container */}
+            {/* Carousel Slide Container with Smooth Crossfade */}
             <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-gray-950 shadow-inner group">
-                <Image
-                    key={activeSlide.src}
-                    src={activeSlide.src}
-                    alt={activeSlide.title}
-                    fill
-                    priority={currentIndex === 0}
-                    className="object-contain transition-all duration-500 group-hover:scale-102"
-                    sizes="(max-width: 1024px) 100vw, 380px"
-                />
+                {instagramSlides.map((slide, idx) => {
+                    const isActive = currentIndex === idx;
+                    return (
+                        <div
+                            key={slide.id}
+                            className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
+                                isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                            }`}
+                        >
+                            <Image
+                                src={slide.src}
+                                alt={slide.title}
+                                fill
+                                priority={idx < 3}
+                                className="object-contain"
+                                sizes="(max-width: 1024px) 100vw, 380px"
+                            />
+                        </div>
+                    );
+                })}
 
                 {/* Left/Right arrow overlay buttons */}
-                <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none z-10">
+                <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none z-20">
                     <button
                         onClick={handlePrev}
                         aria-label="Diapositiva anterior"
