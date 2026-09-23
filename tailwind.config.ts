@@ -50,7 +50,7 @@ export default {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))'
         },
-        midnightblue: '#191970',
+        midnightblue: '#000035',
         brand: {
           navy: '#0C2340',
           'navy-dark': '#061324',
