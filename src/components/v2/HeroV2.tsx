@@ -39,7 +39,11 @@ export default function HeroV2() {
                             if (p.slug === 'hello-world') return;
                             const title = stripHtml(p.title?.rendered || '');
                             const linkUrl = `/anuncios-notas/${p.slug}`;
-                            const img = p._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/articulos/FutbolEntreLineas.png';
+                            const fm = p._embedded?.['wp:featuredmedia']?.[0];
+                            const img = fm?.media_details?.sizes?.medium_large?.source_url ||
+                                        fm?.media_details?.sizes?.medium?.source_url ||
+                                        fm?.source_url ||
+                                        '/articulos/FutbolEntreLineas.png';
 
                             const terms = p._embedded?.['wp:term']?.[0] || [];
                             const isCol = terms.some((t: any) => {
@@ -178,7 +182,7 @@ export default function HeroV2() {
             {/* Single Hero Background Image */}
             <div className="absolute inset-0 w-full h-full">
                 <Image
-                    src="/galeria/entrenado_mirando_horizonte.png"
+                    src="/galeria/entrenado_mirando_horizonte.webp"
                     alt="Torneo Nuevas Estrellas Electrolit 2026"
                     fill
                     className="object-cover object-[37.5%_center] lg:object-center"

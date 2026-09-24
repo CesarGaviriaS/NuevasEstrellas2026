@@ -43,6 +43,13 @@ export interface WordPressPost {
             id: number;
             source_url: string;
             alt_text?: string;
+            media_details?: {
+                sizes?: Record<string, {
+                    source_url: string;
+                    width: number;
+                    height: number;
+                }>;
+            };
         }>;
         'wp:term'?: Array<Array<{
             id: number;
@@ -282,12 +289,28 @@ export function parseMediaUrl(val: any, fallbackUrl: string = ''): string {
 }
 
 /**
- * Helper para extraer la URL de la imagen destacada desde _embedded
+ * Helper para extraer la URL de la imagen destacada desde _embedded con soporte de tamaños optimizados
  */
-export function getFeaturedImageUrl(post: WordPressPost, fallbackUrl: string = '/articulos/FutbolEntreLineas.png'): string {
+export function getFeaturedImageUrl(
+    post: WordPressPost, 
+    fallbackUrl: string = '/articulos/FutbolEntreLineas.png',
+    preferredSize?: 'thumbnail' | 'medium' | 'medium_large' | 'large' | 'full'
+): string {
     const media = post._embedded?.['wp:featuredmedia']?.[0];
-    if (media?.source_url) {
-        return media.source_url;
+    if (media) {
+        if (preferredSize && media.media_details?.sizes?.[preferredSize]?.source_url) {
+            return media.media_details.sizes[preferredSize].source_url;
+        }
+        // If preferredSize is not specified or full is requested, default to medium_large for listings/cards if available
+        if (preferredSize === 'thumbnail' || preferredSize === 'medium' || preferredSize === 'medium_large') {
+            return media.media_details?.sizes?.medium_large?.source_url || 
+                   media.media_details?.sizes?.medium?.source_url || 
+                   media.source_url || 
+                   fallbackUrl;
+        }
+        if (media.source_url) {
+            return media.source_url;
+        }
     }
     return fallbackUrl;
 }
@@ -420,7 +443,7 @@ export async function getAnunciosYNotasData(): Promise<AnunciosYNotasState> {
     // Formatear Noticias (solo si tienen categoría Noticias)
     const dynamicAnuncios: Anuncio[] = noticiasPosts.map(p => ({
         title: stripHtml(p.title.rendered),
-        imageUrl: getFeaturedImageUrl(p, '/articulos/FutbolEntreLineas.png'),
+        imageUrl: getFeaturedImageUrl(p, '/articulos/FutbolEntreLineas.png', 'medium_large'),
         linkUrl: `/anuncios-notas/${p.slug}`,
         imageAlt: stripHtml(p.title.rendered)
     }));
@@ -433,7 +456,7 @@ export async function getAnunciosYNotasData(): Promise<AnunciosYNotasState> {
         const main = columnasPosts[0];
         dynamicNotaPrincipal = {
             title: stripHtml(main.title.rendered),
-            imageUrl: getFeaturedImageUrl(main, '/articulos/FutbolEntreLineas.png'),
+            imageUrl: getFeaturedImageUrl(main, '/articulos/FutbolEntreLineas.png', 'medium_large'),
             linkUrl: `/anuncios-notas/${main.slug}`,
             imageAlt: stripHtml(main.title.rendered)
         };
