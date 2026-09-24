@@ -5,7 +5,7 @@ export default function FooterV2() {
     const WHATSAPP_URL = "https://wa.me/573002125586?text=" + encodeURIComponent("¡Hola! Deseo más información sobre el Torneo Nuevas Estrellas Electrolit 2026.");
 
     return (
-        <footer className="bg-primary text-white py-14">
+        <footer className="bg-[#000035] text-white py-14">
             <div className="mx-auto w-full responsive-padding">
                 <div className="text-center max-w-4xl mx-auto">
                     <div className="mb-6 relative h-20 w-full">
