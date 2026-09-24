@@ -250,7 +250,7 @@ export default function HeroV2() {
                                     <div className="flex items-center gap-2.5">
                                         <Newspaper className="w-5 h-5 text-amber-300" />
                                         <span className="text-sm font-bold uppercase tracking-wider text-white drop-shadow-sm">
-                                            Noticias & Actualizaciones
+                                            Noticias y Actualidad
                                         </span>
                                     </div>
                                     <div className="flex items-center gap-3">
