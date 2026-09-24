@@ -20,62 +20,60 @@ export default function CostosCalendarioV2() {
                 {/* Title */}
                 <div className="text-center max-w-3xl mx-auto pb-14">
                     <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary font-bold rounded-full text-xs sm:text-sm uppercase tracking-wider mb-3">
-                        Inversión y Proceso Oficial
+                        Registro y Cronograma Oficial
                     </span>
                     <h2 className="text-3xl md:text-5xl font-bold text-midnightblue leading-tight pb-4">
-                        Inscripciones y Calendario de Pagos
+                        Inscripciones y Fechas Clave
                     </h2>
                     <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                        Asegura la participación de tu club con facilidades de pago en 2 cuotas y cupos limitados por categoría.
+                        Asegura la participación de tu club dentro de los plazos establecidos y cupos disponibles por categoría.
                     </p>
                 </div>
 
                 <div className="grid lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-start">
-                    {/* Price & Payment Schedule Box (5 cols) */}
+                    {/* Payment Schedule Box without raw numbers (5 cols) */}
                     <div className="lg:col-span-5 bg-gradient-to-br from-primary to-midnightblue text-white rounded-3xl p-8 shadow-xl relative overflow-hidden">
                         <div className="relative z-10 space-y-6">
                             <span className="inline-block px-3.5 py-1 bg-white/20 text-white font-semibold rounded-full text-xs uppercase tracking-wider">
-                                Valor por Equipo
+                                Inscripción Oficial 2026
                             </span>
 
                             <div>
-                                <div className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-                                    $3.000.000 <span className="text-xl font-medium text-white/80">COP</span>
+                                <div className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+                                    Cupos Limitados por Categoría
                                 </div>
-                                <p className="text-xs sm:text-sm text-white/80 mt-1">
-                                    Aplica para cualquier categoría oficial (Sub-12, Sub-14, Sub-16, Sub-18).
+                                <p className="text-xs sm:text-sm text-white/80 mt-2">
+                                    Aplica para clubes y academias en Sub-12, Sub-14, Sub-16 y Sub-18.
                                 </p>
                             </div>
 
                             <div className="border-t border-white/20 pt-5 space-y-4">
                                 <div className="text-sm font-bold text-amber-300 uppercase tracking-wider">
-                                    Cronograma de Pago
+                                    Cronograma de Inscripción
                                 </div>
 
-                                <div className="bg-white/10 rounded-xl p-4 space-y-3">
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <Calendar className="w-4 h-4 text-amber-300" />
-                                            <span className="font-semibold text-sm">1ª Cuota (50%)</span>
-                                        </div>
-                                        <span className="font-bold text-sm">$1.500.000</span>
+                                <div className="bg-white/10 rounded-xl p-4 space-y-2">
+                                    <div className="flex items-center gap-2 font-semibold text-sm">
+                                        <Calendar className="w-4 h-4 text-amber-300 flex-shrink-0" />
+                                        <span>Primer pago (50% de la inscripción)</span>
                                     </div>
                                     <div className="text-xs text-white/80 pl-6">
-                                        Fecha límite: <strong>15 de Octubre</strong> (Reserva oficial de cupo)
+                                        Fecha límite: <strong>15 de Octubre de 2026</strong> (Reserva oficial de cupo)
                                     </div>
                                 </div>
 
-                                <div className="bg-white/10 rounded-xl p-4 space-y-3">
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <Calendar className="w-4 h-4 text-amber-300" />
-                                            <span className="font-semibold text-sm">2ª Cuota (50%)</span>
-                                        </div>
-                                        <span className="font-bold text-sm">$1.500.000</span>
+                                <div className="bg-white/10 rounded-xl p-4 space-y-2">
+                                    <div className="flex items-center gap-2 font-semibold text-sm">
+                                        <Calendar className="w-4 h-4 text-amber-300 flex-shrink-0" />
+                                        <span>Segundo pago (50% restante)</span>
                                     </div>
                                     <div className="text-xs text-white/80 pl-6">
-                                        Fecha límite: <strong>31 de Octubre</strong> (Cierre de inscripciones)
+                                        Fecha límite: <strong>31 de Octubre de 2026</strong> (Cierre de inscripciones)
                                     </div>
+                                </div>
+
+                                <div className="bg-amber-500/20 border border-amber-400/30 rounded-xl p-3.5 text-xs text-amber-200">
+                                    <strong>Congreso Técnico Virtual:</strong> 12 de Noviembre de 2026
                                 </div>
                             </div>
 

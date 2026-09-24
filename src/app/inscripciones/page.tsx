@@ -214,48 +214,46 @@ export default function InscripcionesPage() {
                             </div>
                         </div>
 
-                        {/* Right Column: Pricing, Dates & Direct WhatsApp Button (5 cols) */}
+                        {/* Right Column: Registration Schedule & Direct WhatsApp Button (5 cols) */}
                         <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28">
                             <div className="bg-gradient-to-br from-primary to-midnightblue text-white rounded-3xl p-8 shadow-xl space-y-6">
                                 <span className="inline-block px-3.5 py-1 bg-white/20 text-white font-semibold rounded-full text-xs uppercase tracking-wider">
-                                    Inversión por Equipo
+                                    Inscripción Oficial 2026
                                 </span>
 
                                 <div>
-                                    <div className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-                                        $3.000.000 <span className="text-xl font-medium text-white/80">COP</span>
+                                    <div className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+                                        Cupos Limitados por Categoría
                                     </div>
-                                    <p className="text-xs text-white/80 mt-1">
-                                        Cupo garantizado por categoría (Sub-12, Sub-14, Sub-16 o Sub-18).
+                                    <p className="text-xs sm:text-sm text-white/80 mt-2">
+                                        Sub-12 · Sub-14 · Sub-16 · Sub-18 · Yopal, Casanare
                                     </p>
                                 </div>
 
                                 <div className="border-t border-white/20 pt-5 space-y-4">
                                     <div className="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
-                                        <Calendar className="w-4 h-4" /> Cronograma de Pagos Oficial
+                                        <Calendar className="w-4 h-4" /> Cronograma de Inscripción
                                     </div>
 
-                                    <div className="bg-white/10 rounded-xl p-4 space-y-1">
-                                        <div className="flex items-center justify-between font-bold text-sm">
-                                            <span>1ª Cuota (50%)</span>
-                                            <span>$1.500.000</span>
+                                    <div className="bg-white/10 rounded-xl p-4 space-y-1.5">
+                                        <div className="font-bold text-sm">
+                                            Primer pago (50% de la inscripción)
                                         </div>
                                         <div className="text-xs text-white/80">
-                                            Fecha límite: <strong>15 de Octubre de 2026</strong>
+                                            Fecha límite: <strong>15 de Octubre de 2026</strong> (Reserva oficial de cupo)
                                         </div>
                                     </div>
 
-                                    <div className="bg-white/10 rounded-xl p-4 space-y-1">
-                                        <div className="flex items-center justify-between font-bold text-sm">
-                                            <span>2ª Cuota (50%)</span>
-                                            <span>$1.500.000</span>
+                                    <div className="bg-white/10 rounded-xl p-4 space-y-1.5">
+                                        <div className="font-bold text-sm">
+                                            Segundo pago (50% restante)
                                         </div>
                                         <div className="text-xs text-white/80">
-                                            Fecha límite: <strong>31 de Octubre de 2026</strong>
+                                            Fecha límite: <strong>31 de Octubre de 2026</strong> (Cierre de inscripciones)
                                         </div>
                                     </div>
 
-                                    <div className="text-xs text-amber-200 bg-amber-500/20 rounded-xl p-3">
+                                    <div className="text-xs text-amber-200 bg-amber-500/20 border border-amber-400/30 rounded-xl p-3.5">
                                         <strong>Congreso Técnico Virtual:</strong> 12 de Noviembre de 2026
                                     </div>
                                 </div>
