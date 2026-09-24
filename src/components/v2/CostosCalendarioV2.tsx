@@ -1,4 +1,5 @@
 import { CheckCircle, Calendar, Download, PhoneCall, AlertCircle, ShieldCheck } from 'lucide-react';
+import DownloadLink from '@/components/ui/DownloadLink';
 
 const WHATSAPP_URL = "https://wa.me/573002125586?text=" + encodeURIComponent("¡Hola! Deseo apartar el cupo de mi equipo para el Torneo Nuevas Estrellas Electrolit 2026.");
 
@@ -122,20 +123,18 @@ export default function CostosCalendarioV2() {
                                         <div className="text-[11px] text-gray-500 mt-0.5">Registro de hasta 20 jugadores</div>
                                     </div>
                                     <div className="flex gap-2 pt-2 border-t border-gray-200">
-                                        <a
+                                        <DownloadLink
                                             href="/documentos2026/PLANILLA DE INSCRIPCIÓN 2026.pdf"
-                                            download
                                             className="flex-1 inline-flex items-center justify-center gap-1 py-1.5 px-2.5 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-lg text-xs font-bold transition-colors"
                                         >
                                             <Download className="w-3.5 h-3.5" /> PDF
-                                        </a>
-                                        <a
+                                        </DownloadLink>
+                                        <DownloadLink
                                             href="/documentos2026/PLANILLA DE INSCRIPCIÓN 2026.docx"
-                                            download
                                             className="flex-1 inline-flex items-center justify-center gap-1 py-1.5 px-2.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-lg text-xs font-bold transition-colors"
                                         >
                                             <Download className="w-3.5 h-3.5" /> Word
-                                        </a>
+                                        </DownloadLink>
                                     </div>
                                 </div>
 
@@ -148,20 +147,18 @@ export default function CostosCalendarioV2() {
                                         <div className="text-[11px] text-gray-500 mt-0.5">Firma de padres / acudientes</div>
                                     </div>
                                     <div className="flex gap-2 pt-2 border-t border-gray-200">
-                                        <a
+                                        <DownloadLink
                                             href="/documentos2026/Carta de Autorización participacion torneo 2026 y Exoneración de Responsabilidad.pdf"
-                                            download
                                             className="flex-1 inline-flex items-center justify-center gap-1 py-1.5 px-2.5 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-lg text-xs font-bold transition-colors"
                                         >
                                             <Download className="w-3.5 h-3.5" /> PDF
-                                        </a>
-                                        <a
+                                        </DownloadLink>
+                                        <DownloadLink
                                             href="/documentos2026/Carta de Autorización participacion torneo 2026 y Exoneración de Responsabilidad.docx"
-                                            download
                                             className="flex-1 inline-flex items-center justify-center gap-1 py-1.5 px-2.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-lg text-xs font-bold transition-colors"
                                         >
                                             <Download className="w-3.5 h-3.5" /> Word
-                                        </a>
+                                        </DownloadLink>
                                     </div>
                                 </div>
 
@@ -174,20 +171,18 @@ export default function CostosCalendarioV2() {
                                         <div className="text-[11px] text-gray-500 mt-0.5">Formalización y reserva de cupo</div>
                                     </div>
                                     <div className="flex gap-2 pt-2 border-t border-gray-200">
-                                        <a
+                                        <DownloadLink
                                             href="/documentos2026/CARTA DE INTENCIÓN DE PARTICIPACIÓN.pdf"
-                                            download
                                             className="flex-1 inline-flex items-center justify-center gap-1 py-1.5 px-2.5 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-lg text-xs font-bold transition-colors"
                                         >
                                             <Download className="w-3.5 h-3.5" /> PDF
-                                        </a>
-                                        <a
+                                        </DownloadLink>
+                                        <DownloadLink
                                             href="/documentos2026/CARTA DE INTENCIÓN DE PARTICIPACIÓN.docx"
-                                            download
                                             className="flex-1 inline-flex items-center justify-center gap-1 py-1.5 px-2.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-lg text-xs font-bold transition-colors"
                                         >
                                             <Download className="w-3.5 h-3.5" /> Word
-                                        </a>
+                                        </DownloadLink>
                                     </div>
                                 </div>
 
@@ -200,20 +195,18 @@ export default function CostosCalendarioV2() {
                                         <div className="text-[11px] text-gray-500 mt-0.5">Cobertura audiovisual y medios</div>
                                     </div>
                                     <div className="flex gap-2 pt-2 border-t border-gray-200">
-                                        <a
+                                        <DownloadLink
                                             href="/documentos2026/AUTORIZACIÓN DE USO DE IMAGEN.pdf"
-                                            download
                                             className="flex-1 inline-flex items-center justify-center gap-1 py-1.5 px-2.5 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-lg text-xs font-bold transition-colors"
                                         >
                                             <Download className="w-3.5 h-3.5" /> PDF
-                                        </a>
-                                        <a
+                                        </DownloadLink>
+                                        <DownloadLink
                                             href="/documentos2026/AUTORIZACIÓN DE USO DE IMAGEN.docx"
-                                            download
                                             className="flex-1 inline-flex items-center justify-center gap-1 py-1.5 px-2.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-lg text-xs font-bold transition-colors"
                                         >
                                             <Download className="w-3.5 h-3.5" /> Word
-                                        </a>
+                                        </DownloadLink>
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import NavbarV2 from '@/components/v2/NavbarV2';
 import FooterV2 from '@/components/v2/FooterV2';
+import DownloadLink from '@/components/ui/DownloadLink';
 import { Download, PhoneCall, Calendar, ShieldCheck, FileText, CheckCircle2, AlertCircle, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
@@ -110,20 +111,18 @@ export default function InscripcionesPage() {
                                             </div>
                                         </div>
                                         <div className="flex gap-2 pt-3 border-t border-gray-200">
-                                            <a
+                                            <DownloadLink
                                                 href="/documentos2026/PLANILLA DE INSCRIPCIÓN 2026.pdf"
-                                                download
                                                 className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-xl text-xs font-bold transition-colors"
                                             >
                                                 <Download className="w-4 h-4" /> PDF
-                                            </a>
-                                            <a
+                                            </DownloadLink>
+                                            <DownloadLink
                                                 href="/documentos2026/PLANILLA DE INSCRIPCIÓN 2026.docx"
-                                                download
                                                 className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-xl text-xs font-bold transition-colors"
                                             >
                                                 <Download className="w-4 h-4" /> Word
-                                            </a>
+                                            </DownloadLink>
                                         </div>
                                     </div>
 
@@ -138,20 +137,18 @@ export default function InscripcionesPage() {
                                             </div>
                                         </div>
                                         <div className="flex gap-2 pt-3 border-t border-gray-200">
-                                            <a
+                                            <DownloadLink
                                                 href="/documentos2026/Carta de Autorización participacion torneo 2026 y Exoneración de Responsabilidad.pdf"
-                                                download
                                                 className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-xl text-xs font-bold transition-colors"
                                             >
                                                 <Download className="w-4 h-4" /> PDF
-                                            </a>
-                                            <a
+                                            </DownloadLink>
+                                            <DownloadLink
                                                 href="/documentos2026/Carta de Autorización participacion torneo 2026 y Exoneración de Responsabilidad.docx"
-                                                download
                                                 className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-xl text-xs font-bold transition-colors"
                                             >
                                                 <Download className="w-4 h-4" /> Word
-                                            </a>
+                                            </DownloadLink>
                                         </div>
                                     </div>
 
@@ -166,20 +163,18 @@ export default function InscripcionesPage() {
                                             </div>
                                         </div>
                                         <div className="flex gap-2 pt-3 border-t border-gray-200">
-                                            <a
+                                            <DownloadLink
                                                 href="/documentos2026/CARTA DE INTENCIÓN DE PARTICIPACIÓN.pdf"
-                                                download
                                                 className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-xl text-xs font-bold transition-colors"
                                             >
                                                 <Download className="w-4 h-4" /> PDF
-                                            </a>
-                                            <a
+                                            </DownloadLink>
+                                            <DownloadLink
                                                 href="/documentos2026/CARTA DE INTENCIÓN DE PARTICIPACIÓN.docx"
-                                                download
                                                 className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-xl text-xs font-bold transition-colors"
                                             >
                                                 <Download className="w-4 h-4" /> Word
-                                            </a>
+                                            </DownloadLink>
                                         </div>
                                     </div>
 
@@ -194,20 +189,18 @@ export default function InscripcionesPage() {
                                             </div>
                                         </div>
                                         <div className="flex gap-2 pt-3 border-t border-gray-200">
-                                            <a
+                                            <DownloadLink
                                                 href="/documentos2026/AUTORIZACIÓN DE USO DE IMAGEN.pdf"
-                                                download
                                                 className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-xl text-xs font-bold transition-colors"
                                             >
                                                 <Download className="w-4 h-4" /> PDF
-                                            </a>
-                                            <a
+                                            </DownloadLink>
+                                            <DownloadLink
                                                 href="/documentos2026/AUTORIZACIÓN DE USO DE IMAGEN.docx"
-                                                download
                                                 className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-xl text-xs font-bold transition-colors"
                                             >
                                                 <Download className="w-4 h-4" /> Word
-                                            </a>
+                                            </DownloadLink>
                                         </div>
                                     </div>
                                 </div>

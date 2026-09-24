@@ -139,6 +139,12 @@ RewriteRule . /index.html [L]
     ExpiresByType application/javascript "access plus 1 year"
     ExpiresByType text/javascript "access plus 1 year"
     
+    # Documentos y Archivos Descargables (1 mes de caché para evitar consumo innecesario de red)
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType application/msword "access plus 1 month"
+    ExpiresByType application/vnd.openxmlformats-officedocument.wordprocessingml.document "access plus 1 month"
+    ExpiresByType application/zip "access plus 1 month"
+
     # HTML (Caché corta para actualizaciones inmediatas)
     ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
