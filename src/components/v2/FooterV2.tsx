@@ -26,7 +26,7 @@ export default function FooterV2() {
                             Torneo Nuevas Estrellas Electrolit 2026 · Yopal, Casanare
                         </p>
                         <p className="text-sm font-semibold text-white/90">
-                            Línea Oficial de Contacto e Inscripciones: <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-amber-300 font-bold hover:underline ml-1">+57 300 212 5586</a>
+                            Línea Oficial de Contacto e Inscripciones: <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-amber-300 font-bold hover:underline ml-1">300 212 5586</a>
                         </p>
                     </div>
 
@@ -38,9 +38,6 @@ export default function FooterV2() {
                         <Link href="/#scouts" className="hover:underline">Scouts</Link>
                         <Link href="/#noticias" className="hover:underline">Noticias</Link>
                         <Link href="/#promotora" className="hover:underline">La Promotora</Link>
-                        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-amber-300 font-bold hover:underline">
-                            WhatsApp (+57 300 212 5586)
-                        </a>
                     </div>
 
                     <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-white/80 gap-4">
