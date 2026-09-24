@@ -131,19 +131,12 @@ export default function HeroV2() {
         setActiveIndex((prev) => (prev - 1 + articles.length) % articles.length);
     }, [articles.length]);
 
-    // Native Wheel Listener scoped only to the active (middle) card so top/bottom cards and surrounding areas scroll the page normally
+    // Native Wheel Listener for Desktop PC: works anywhere over the news carousel widget
     useEffect(() => {
         const el = carouselContainerRef.current;
         if (!el) return;
 
         const handleNativeWheel = (e: WheelEvent) => {
-            const target = e.target as HTMLElement | null;
-            const activeCardEl = target?.closest('[data-active-card="true"]');
-            if (!activeCardEl) {
-                // If wheel is not over the middle active card, let the browser scroll the page normally
-                return;
-            }
-
             e.preventDefault();
             e.stopPropagation();
 
