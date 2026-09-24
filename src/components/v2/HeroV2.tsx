@@ -23,6 +23,7 @@ export default function HeroV2() {
     const isDraggingRef = useRef(false);
     const startYRef = useRef(0);
     const lastWheelTimeRef = useRef(0);
+    const carouselContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         let isMounted = true;
@@ -130,19 +131,34 @@ export default function HeroV2() {
         setActiveIndex((prev) => (prev - 1 + articles.length) % articles.length);
     }, [articles.length]);
 
-    // Mouse Wheel Handler (Scroll)
-    const handleWheel = (e: React.WheelEvent) => {
-        const now = Date.now();
-        if (now - lastWheelTimeRef.current < 280) return; // Cooldown to feel responsive and smooth
-        if (Math.abs(e.deltaY) > 18) {
-            lastWheelTimeRef.current = now;
-            if (e.deltaY > 0) {
-                nextSlide();
-            } else {
-                prevSlide();
+    // Native Wheel Listener with non-passive e.preventDefault() to isolate scrolling from the window
+    useEffect(() => {
+        const el = carouselContainerRef.current;
+        if (!el) return;
+
+        const handleNativeWheel = (e: WheelEvent) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const now = Date.now();
+            if (now - lastWheelTimeRef.current < 200) return;
+
+            if (Math.abs(e.deltaY) > 8) {
+                lastWheelTimeRef.current = now;
+                if (e.deltaY > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
             }
-        }
-    };
+        };
+
+        el.addEventListener('wheel', handleNativeWheel, { passive: false });
+
+        return () => {
+            el.removeEventListener('wheel', handleNativeWheel);
+        };
+    }, [nextSlide, prevSlide]);
 
     // Touch & Drag Handlers
     const handleTouchStart = (e: React.TouchEvent) => {
@@ -265,13 +281,13 @@ export default function HeroV2() {
 
                                 {/* Interactive 3D Gesture Stage - Fixed reserved height */}
                                 <div
-                                    onWheel={handleWheel}
+                                    ref={carouselContainerRef}
                                     onTouchStart={handleTouchStart}
                                     onTouchEnd={handleTouchEnd}
                                     onMouseDown={handleMouseDown}
                                     onMouseUp={handleMouseUp}
                                     onMouseLeave={handleMouseLeave}
-                                    className="relative w-full h-[320px] sm:h-[340px] flex items-center justify-center cursor-grab active:cursor-grabbing overflow-visible"
+                                    className="relative w-full h-[320px] sm:h-[340px] flex items-center justify-center cursor-grab active:cursor-grabbing overflow-visible touch-none"
                                 >
                                     {isLoadingNews && articles.length === 0 ? (
                                         /* Skeleton placeholder strictly preserving exact layout */
