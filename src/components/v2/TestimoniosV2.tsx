@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { MessageSquareQuote, Star, Quote, ShieldCheck, UserCheck, Trophy } from 'lucide-react';
+import { MessageSquareQuote, Quote } from 'lucide-react';
 
 interface Testimonial {
     id: string;
@@ -149,20 +149,8 @@ export default function TestimoniosV2() {
                             </div>
 
                             <div>
-                                {/* Rating Stars & Type Badge */}
-                                <div className="flex items-center justify-between gap-2 mb-4">
-                                    <div className="flex text-amber-400">
-                                        {[...Array(5)].map((_, i) => (
-                                            <Star key={i} className="w-4 h-4 fill-amber-400" />
-                                        ))}
-                                    </div>
-                                    <span className="text-[11px] font-bold px-3 py-1 bg-gray-100 text-gray-700 rounded-full uppercase tracking-wider">
-                                        {t.typeLabel}
-                                    </span>
-                                </div>
-
                                 {/* Highlight Tagline */}
-                                <h4 className="font-bold text-midnightblue text-base leading-snug mb-3">
+                                <h4 className="font-bold text-midnightblue text-base leading-snug mb-3 pr-8">
                                     &ldquo;{t.highlight}&rdquo;
                                 </h4>
 
