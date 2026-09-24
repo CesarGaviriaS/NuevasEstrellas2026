@@ -242,7 +242,7 @@ export default function HeroV2() {
                                 </Link>
                                 <Link
                                     href="/inscripciones"
-                                    className="bg-primary hover:bg-blue-700 text-white font-bold text-sm sm:text-base px-7 py-3 rounded-full shadow-lg transition-all"
+                                    className="bg-[#000035] hover:bg-[#000050] text-white font-bold text-sm sm:text-base px-7 py-3 rounded-full shadow-lg border border-white/25 transition-all"
                                 >
                                     Inscribir Equipo
                                 </Link>
