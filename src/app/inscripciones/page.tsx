@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import NavbarV2 from '@/components/v2/NavbarV2';
 import FooterV2 from '@/components/v2/FooterV2';
 import DownloadLink from '@/components/ui/DownloadLink';
+import { OFFICIAL_WHATSAPP_URL } from '@/lib/constants';
 import { Download, PhoneCall, Calendar, ShieldCheck, FileText, CheckCircle2, AlertCircle, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     description: 'Proceso oficial de inscripción, requisitos, fechas de pago y formatos descargables para el Torneo Nuevas Estrellas Electrolit 2026 en Yopal, Casanare.',
 };
 
-const WHATSAPP_URL = "https://wa.me/573002125586?text=" + encodeURIComponent("¡Hola! Deseo formalizar la inscripción de mi equipo para el Torneo Nuevas Estrellas Electrolit 2026 en Yopal.");
+const WHATSAPP_URL = OFFICIAL_WHATSAPP_URL;
 
 const requisitos = [
     {

@@ -1,7 +1,8 @@
 import { CheckCircle, Calendar, Download, PhoneCall, AlertCircle, ShieldCheck } from 'lucide-react';
 import DownloadLink from '@/components/ui/DownloadLink';
+import { OFFICIAL_WHATSAPP_URL } from '@/lib/constants';
 
-const WHATSAPP_URL = "https://wa.me/573002125586?text=" + encodeURIComponent("¡Hola! Deseo apartar el cupo de mi equipo para el Torneo Nuevas Estrellas Electrolit 2026.");
+const WHATSAPP_URL = OFFICIAL_WHATSAPP_URL;
 
 const includedItems = [
     "Mínimo 4 partidos oficiales por equipo garantizados.",

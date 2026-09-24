@@ -50,8 +50,8 @@ export const impactText = "Hemos acompañado el proceso formativo y competitivo 
 
 export const contactInfo = {
   representative: "Luis Francisco Lagos R.",
-  email: "directornuevasestrellas@gmail.com",
-  phone: "+57 300 212 5586",
+  email: "director@nuevasestrellas.com",
+  phone: "300 212 5586",
   website: "nuevasestrellas.com"
 };
 
@@ -78,7 +78,7 @@ export const socialLinks = [
   },
   {
     name: "WhatsApp",
-    url: "#",
+    url: "https://wa.me/573002125586?text=Hola%20deseo%20tener%20mas%20informaci%C3%B3n%20sobre%20el%20torneo%20Nuevas%20estrellas%20electrolit%202026%20en%20Yopal",
     colorClass: "hover:text-green-600"
   }
 ];

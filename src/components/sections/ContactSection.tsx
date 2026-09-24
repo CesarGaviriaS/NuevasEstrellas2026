@@ -1,5 +1,6 @@
 import { Facebook, Instagram } from 'lucide-react';
 import { contactInfo as defaultContactInfo, socialLinks } from '@/lib/data';
+import { OFFICIAL_WHATSAPP_MESSAGE, OFFICIAL_WHATSAPP_URL } from '@/lib/constants';
 
 interface ContactSectionProps {
     representative?: string;
@@ -13,7 +14,7 @@ export default function ContactSection({
     whatsapp
 }: ContactSectionProps) {
     const rawWhatsapp = (whatsapp || defaultContactInfo.phone || '').replace(/[^0-9]/g, '');
-    const whatsappUrl = rawWhatsapp ? `https://wa.me/${rawWhatsapp}?text=${encodeURIComponent('Hola, deseo información sobre el Torneo Nuevas Estrellas')}` : '#';
+    const whatsappUrl = rawWhatsapp ? `https://wa.me/${rawWhatsapp}?text=${encodeURIComponent(OFFICIAL_WHATSAPP_MESSAGE)}` : OFFICIAL_WHATSAPP_URL;
 
     return (
         <section id="contact" className="py-20 bg-white">
