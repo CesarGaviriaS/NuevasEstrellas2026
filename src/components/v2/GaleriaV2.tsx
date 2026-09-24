@@ -75,6 +75,8 @@ const galleryPhotos = [
 export default function GaleriaV2() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([]);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const isInitialMount = useRef(true);
 
     const activePhoto = galleryPhotos[currentIndex];
 
@@ -87,11 +89,16 @@ export default function GaleriaV2() {
     };
 
     useEffect(() => {
-        thumbnailRefs.current[currentIndex]?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'center'
-        });
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+            return;
+        }
+        const container = containerRef.current;
+        const target = thumbnailRefs.current[currentIndex];
+        if (container && target) {
+            const left = target.offsetLeft - container.offsetWidth / 2 + target.offsetWidth / 2;
+            container.scrollTo({ left, behavior: 'smooth' });
+        }
     }, [currentIndex]);
 
     return (
@@ -185,7 +192,7 @@ export default function GaleriaV2() {
 
                     {/* Carousel Thumbnails Row (Horizontally scrollable and scalable for any number of images) */}
                     <div className="mt-8 pt-6 border-t border-gray-100">
-                        <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-2 pt-1 px-1 scroll-smooth focus:outline-none no-scrollbar">
+                        <div ref={containerRef} className="flex gap-3 sm:gap-4 overflow-x-auto pb-2 pt-1 px-1 scroll-smooth focus:outline-none no-scrollbar">
                             {galleryPhotos.map((photo, index) => {
                                 const isActive = currentIndex === index;
                                 return (
