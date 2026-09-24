@@ -131,12 +131,19 @@ export default function HeroV2() {
         setActiveIndex((prev) => (prev - 1 + articles.length) % articles.length);
     }, [articles.length]);
 
-    // Native Wheel Listener with non-passive e.preventDefault() to isolate scrolling from the window
+    // Native Wheel Listener scoped only to the active (middle) card so top/bottom cards and surrounding areas scroll the page normally
     useEffect(() => {
         const el = carouselContainerRef.current;
         if (!el) return;
 
         const handleNativeWheel = (e: WheelEvent) => {
+            const target = e.target as HTMLElement | null;
+            const activeCardEl = target?.closest('[data-active-card="true"]');
+            if (!activeCardEl) {
+                // If wheel is not over the middle active card, let the browser scroll the page normally
+                return;
+            }
+
             e.preventDefault();
             e.stopPropagation();
 
@@ -160,7 +167,7 @@ export default function HeroV2() {
         };
     }, [nextSlide, prevSlide]);
 
-    // Touch & Drag Handlers
+    // Touch & Drag Handlers (attached only to the active card)
     const handleTouchStart = (e: React.TouchEvent) => {
         startYRef.current = e.touches[0].clientY;
     };
@@ -282,12 +289,7 @@ export default function HeroV2() {
                                 {/* Interactive 3D Gesture Stage - Fixed reserved height */}
                                 <div
                                     ref={carouselContainerRef}
-                                    onTouchStart={handleTouchStart}
-                                    onTouchEnd={handleTouchEnd}
-                                    onMouseDown={handleMouseDown}
-                                    onMouseUp={handleMouseUp}
-                                    onMouseLeave={handleMouseLeave}
-                                    className="relative w-full h-[320px] sm:h-[340px] flex items-center justify-center cursor-grab active:cursor-grabbing overflow-visible touch-none"
+                                    className="relative w-full h-[320px] sm:h-[340px] flex items-center justify-center overflow-visible"
                                 >
                                     {isLoadingNews && articles.length === 0 ? (
                                         /* Skeleton placeholder strictly preserving exact layout */
@@ -348,7 +350,17 @@ export default function HeroV2() {
                                             return (
                                                 <div
                                                     key={`${article.id}-${idx}`}
-                                                    className="absolute w-full px-1 sm:px-2"
+                                                    data-active-card={isActive ? 'true' : undefined}
+                                                    onTouchStart={isActive ? handleTouchStart : undefined}
+                                                    onTouchEnd={isActive ? handleTouchEnd : undefined}
+                                                    onMouseDown={isActive ? handleMouseDown : undefined}
+                                                    onMouseUp={isActive ? handleMouseUp : undefined}
+                                                    onMouseLeave={isActive ? handleMouseLeave : undefined}
+                                                    className={`absolute w-full px-1 sm:px-2 ${
+                                                        isActive
+                                                            ? 'touch-none cursor-grab active:cursor-grabbing'
+                                                            : 'touch-pan-y cursor-pointer'
+                                                    }`}
                                                     style={{
                                                         transform: `translateY(${translateY}px) scale(${scale})`,
                                                         opacity,
