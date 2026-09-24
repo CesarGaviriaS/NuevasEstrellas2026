@@ -43,13 +43,10 @@ export default function AnunciosNotas() {
         <section className="py-20 bg-gradient-to-b from-gray-50 to-white min-h-[600px]">
             <div className="mx-auto w-full responsive-padding">
                 {/* Header */}
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-bold text-midnightblue mb-4">
-                        Noticias y Nota Fútbol entre líneas
+                <div className="text-center mb-12">
+                    <h1 className="text-4xl md:text-5xl font-bold text-midnightblue">
+                        Noticias y Actualidad
                     </h1>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Mantente informado con las últimas publicaciones oficiales del torneo
-                    </p>
                 </div>
 
                 {isLoading && !hasAnyContent ? (
